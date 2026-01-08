@@ -32,12 +32,16 @@ export function AuthButtons({ session }: { session: any }) {
   }, []);
 
   return (
-    <div className="box -translate-y-55 flex shadow-xl shadow-white/10 flex-col backdrop-blur-[7px] items-center bg-white/10 max-w-50 w-50">
+    <div className="relative z-4000 box -translate-y-60 flex shadow-xl shadow-white/10 flex-col backdrop-blur-[7px] items-center bg-white/10 w-full sm:max-w-50 sm:w-50">
       {session ?
       (
       <>
       <WalletProvider>     
-        <div className="bg-green-400 max-w-52 w-52 py-3 px-2 text-sm text-black truncate"></div>
+        <Link href={"/"} className="w-full sm:max-w-52 sm:w-52">
+        <div className="bg-green-600 cursor-pointer hover:brightness-110 flex justify-center gap-2 items-center w-full sm:max-w-52 sm:w-52 text-center py-2 px-2 text-sm font-bold truncate transition">
+          <strong className="font-extrabold">{"<"}</strong> volver al inicio
+        </div>
+        </Link>
         <Link href={"/profile"} className="cursor-pointer w-full">
         <div className="btnPerfil flex w-full justify-around p-3 py-5">
           <span className="uppercase truncate text-left  font-bold flex translate-y-1 flex-col w-fit cursor-pointer">
@@ -55,7 +59,7 @@ export function AuthButtons({ session }: { session: any }) {
         </p>
         <Link href={"/games"} className="w-full overflow-hidden  ">
           <button className="hover:brightness-110 cursor-pointer flex bg-[var(--primary)] font-bold rounded-b-lg outline-[var(--primary)] text-lg outline-[1.5px] p-2 w-full transition">
-            <span className=" shadow shadow-green-400/30 w-full mx-1  h-full rounded-lg">Jugar (-1)</span>
+            <span className=" shadow shadow-green-400/30 w-full mx-1  h-full rounded-lg">Juegos / Jugar</span>
           </button>
         </Link>
       </WalletProvider>

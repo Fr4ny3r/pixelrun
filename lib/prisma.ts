@@ -9,7 +9,7 @@ declare const globalThis: {
 
 // SOLO crear PrismaClient en servidor
 export const prisma =
-  typeof window === "undefined" // ❌ Evita ejecutar en cliente
+  typeof window === "undefined" 
     ? globalThis.prismaGlobal ?? prismaClientSingleton()
     : null;
 

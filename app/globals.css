@@ -1,46 +1,80 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000; 
-  --foreground: #fafafa; 
+  --background: #C7B9B5; 
+  --foreground: #443E3F;
   --primary: var(--color-green-500);
+  --primary-red: #cc9090;
+  --primary-green: #8cbf98;
+  --blur: none;
 }
-
+ 
 
 @media (prefers-color-scheme: dark) {
 
 }
-
+ 
+ 
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --blur: 7px;
+  }
+}
+   
 .btnPerfil:hover > span > button {
   color: var(--foreground);
   opacity: 80%;
 }
   
 body {
-   
+  /*background: url("/background-PNG.webp");*/
   background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /*font-family: Arial, Helvetica, sans-serif;*/
 } 
-
-
-.scrollTransaction::-webkit-scrollbar {
+     
+       
+.scrollGame::-webkit-scrollbar {
   width: 8px;
 }
 
 /* Fondo del scrollbar (pista) */
-.scrollTransaction::-webkit-scrollbar-track {
+.scrollGame::-webkit-scrollbar-track {
   background-color: color-mix(in srgb, var(--primary), black 70%);
 
 }
 
 /* El "pulgar" (lo que se mueve) */
-.scrollTransaction::-webkit-scrollbar-thumb {
+.scrollGame::-webkit-scrollbar-thumb {
   background: var(--primary); /* El verde de tu banner */
   border-radius: 10px;
 }
 
 /* Color al pasar el mouse por encima */
-.scrollTransaction::-webkit-scrollbar-thumb:hover {
+.scrollGame::-webkit-scrollbar-thumb:hover {
   background-color: color-mix(in srgb, var(--primary), black 20%);
-}             
+}  
+
+ 
+
+
+.scrollTransaction::-webkit-scrollbar {
+  position: relative;
+  transform: rotateZ(45deg);
+  width: 8px;
+}   
+  
+/* Fondo del scrollbar (pista) */
+.scrollTransaction::-webkit-scrollbar-track {
+
+}
+
+/* El "pulgar" (lo que se mueve) */
+.scrollTransaction::-webkit-scrollbar-thumb {
+  background: var(--foreground); /* El verde de tu banner */
+}
+
+/* Color al pasar el mouse por encima */
+.scrollTransaction::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--foreground), black 20%);
+} 

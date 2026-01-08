@@ -2,10 +2,11 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaClient } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 
 export const authOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma as PrismaClient),
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -17,24 +18,7 @@ export const authOptions = {
     strategy: "jwt",
   },
   callbacks: {
-    // async signIn({ user }) {
-    // console.log(user)
-    // if (!user?.id) return false;
-
-    // const existingWallet = await prisma.wallet.findUnique({where : {userId: user.id}});
-
-    // if (!existingWallet) {
-    // await prisma.wallet.create({
-    //     data: {
-    //       userId: user.id,
-    //       balance: 100,
-    //     },
-    //   });
-    // }
-    //   return true;
-    // },
     async jwt({ token, user }) {
-      // SOLO en el login inicial
       if (user) {
         token.id = user.id;
       }
@@ -49,22 +33,20 @@ export const authOptions = {
     },
   },
   events: {
-    // Este evento es el lugar correcto para crear la Wallet
     async createUser({ user }) {
       await prisma.wallet.create({
         data: {
           userId: user.id,
-          balance: 100, // Bono inicial para nuevos usuarios
+          balance: 10, 
         },
       });
     },
   },
   httpOptions: {
-    timeout: 10000, // 10 segundos en lugar de 3.5
+    timeout: 10000,
   },
 };
 
-// Solo exporta NextAuth con authOptions
 const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST }; // App Router espera GET y POST
+export { handler as GET, handler as POST };
