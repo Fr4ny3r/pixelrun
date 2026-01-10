@@ -6,13 +6,16 @@ import {Wallet, Play, AddBonus} from '../components/Wallet'
 import { WalletProvider } from '../components/WalletContext'
 
 export default async function Dashboard() {
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions);
   return (
-    <WalletProvider> {/* Los Server Components pueden renderizar Client Providers */}
-      <h1>Dashboard</h1>
-      <Wallet />
-      <Play />
-      <AddBonus />
-    </WalletProvider>
+    <>
+{/*     <WalletProvider>
+       <h1>Dashboard</h1>
+       <Wallet />
+       <Play />
+       <AddBonus />
+     </WalletProvider>*/}
+    No
+    </>
   )
 }

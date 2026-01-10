@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono, Inter } from "next/font/google";
-import { Pixelify_Sans } from "next/font/google";
+// import { Pixelify_Sans } from "next/font/google";
 import {Providers} from './Providers'
 import Navigation from './components/Navigation'
 import "./globals.css";
@@ -15,10 +15,10 @@ import "./globals.css";
 //   subsets: ["latin"],
 // });
 
-const pixelify = Pixelify_Sans({
-  variable: "--font-pixelify",
-  subsets: ["latin"],
-});
+// const pixelify = Pixelify_Sans({
+//   variable: "--font-pixelify",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,11 +27,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${pixelify.className}`}>
-      <body className="scrollTransaction h-screen relative overflow-y-auto md:overflow-y-hidden overflow-x-hidden">
+    // <html lang="en" className={`${pixelify.className}`}>
+    <html lang="en" className={``}>
+      <body className="scrollTransaction relative overflow-y-auto md:overflow-y-hidden overflow-x-hidden">
         <Providers>
           <Navigation /> {/* Ahora sí funcionará como Server Component */}
-          <main>{children}</main>
+          <main className="">{children}</main>
         </Providers>
       </body>
     </html>

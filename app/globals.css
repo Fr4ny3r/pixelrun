@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Pixelify";
+  src: url('/PixelifySans.ttf')
+  format('truetype');    
+  font-weight: normal;
+  font-style: normal;
+}  
+
+@font-face {
+  font-family: "Tiny5";
+  src: url('/Tiny5.ttf')
+  format('truetype');    
+  font-weight: normal;
+  font-style: normal;
+}  
+
+
 :root {
   --background: #C7B9B5; 
   --foreground: #443E3F;
@@ -7,8 +24,10 @@
   --primary-red: #cc9090;
   --primary-green: #8cbf98;
   --blur: none;
+  --font-pixelify: "pixelify";
+  --font-tiny: "Tiny5";
 }
- 
+  
 
 @media (prefers-color-scheme: dark) {
 
@@ -20,24 +39,29 @@
     --blur: 7px;
   }
 }
-   
+    
 .btnPerfil:hover > span > button {
   color: var(--foreground);
   opacity: 80%;
 }
-  
+
+.shadowBateria{
+  box-shadow: 0px 0px 50px 5rem var(--background);
+  opacity: 80%;
+}    
+                        
 body {
   /*background: url("/background-PNG.webp");*/
   background-color: var(--background);
   color: var(--foreground);
-  /*font-family: Arial, Helvetica, sans-serif;*/
-} 
+  font-family: var(--font-pixelify)
+}  
      
        
 .scrollGame::-webkit-scrollbar {
   width: 8px;
 }
-
+ 
 /* Fondo del scrollbar (pista) */
 .scrollGame::-webkit-scrollbar-track {
   background-color: color-mix(in srgb, var(--primary), black 70%);
@@ -77,4 +101,44 @@ body {
 /* Color al pasar el mouse por encima */
 .scrollTransaction::-webkit-scrollbar-thumb:hover {
   background-color: color-mix(in srgb, var(--foreground), black 20%);
+}  
+
+
+
+.parent {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}  
+         
+/*.div1 { 
+    grid-column: span 2 / span 2;
+    grid-row: span 3 / span 3; 
+}
+
+.div3 {
+    grid-column: span 2 / span 2;
+    grid-row: span 3 / span 3;
+    grid-column-start: 4;
+    grid-row-start: 3;
+}
+
+.div4 {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    grid-column-start: 1;
+    grid-row-start: 4;
+}
+
+.div9 {
+    grid-row: span 3 / span 3;
+    grid-column-start: 3;
+    grid-row-start: 1;
 } 
+
+.div10 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 4;
+    grid-row-start: 1;
+}
+ */

@@ -4,35 +4,36 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url = env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id            String   @id @default(cuid())
+  id            String        @id @default(cuid())
   name          String?
-  email         String?  @unique
+  email         String?       @unique
   emailVerified DateTime? // <- NextAuth lo necesita
   image         String?
   accounts      Account[]
   sessions      Session[]
   wallet        Wallet?
-  transactions Transaction[] 
+  transactions  Transaction[]
+  gameSessions  GameSession[]
 }
 
 model Account {
-  id                 String   @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  
-  access_token       String?  
-  expires_at         Int?     
-  token_type         String?  
-  scope              String?  
-  id_token           String?   // <- Agregado
-  session_state      String?   // <- Agregado
-  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? // <- Agregado
+  session_state     String? // <- Agregado
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -59,8 +60,28 @@ model Transaction {
   type      String
   createdAt DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id])
+  gameSessionId String?
+  gameSession   GameSession? @relation(fields: [gameSessionId], references: [id])
 
-  @@index([userId])
+  user User @relation(fields: [userId], references: [id])
 }
 
+model GameSession {
+  id         String    @id @default(cuid())
+  userId     String
+  gameType   String
+  gameCost   Int
+  gameReward Int?
+  result     String?
+  startedAt  DateTime  @default(now())
+  endedAt    DateTime?
+  duration   Int?
+  status     String
+  serverSeed String
+  clientSeed String?
+  nonce      Int
+
+  transactions Transaction[]
+
+  user User @relation(fields: [userId], references: [id])
+}

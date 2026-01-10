@@ -1,4 +1,4 @@
-import { REWARDS } from "@/lib/rewards";
+import { REWARDS } from "@/lib/economy";
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
