@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
@@ -10,7 +10,9 @@ export async function POST(req: Request) {
 
   const { action } = await req.json();
 
-  const user = await prisma.user.findUnique({
+  let prism : any = prisma;
+
+  const user = await prism.user.findUnique({
     where: { email: session.user.email },
     include: { activeGame: true }
   });
@@ -22,12 +24,12 @@ export async function POST(req: Request) {
     if (user.balance < 2)
       return NextResponse.json({ error: "No balance" });
 
-    await prisma.$transaction([
-      prisma.user.update({
+    await prism.$transaction([
+      prism.user.update({
         where: { id: user.id },
         data: { balance: { decrement: 2 } }
       }),
-      prisma.activeGame.create({
+      prism.activeGame.create({
         data: {
           userId: user.id,
           game: "CLICK_RISK",
@@ -36,7 +38,7 @@ export async function POST(req: Request) {
           risk: 5
         }
       }),
-      prisma.transaction.create({
+      prism.transaction.create({
         data: {
           userId: user.id,
           amount: -2,
@@ -58,9 +60,9 @@ export async function POST(req: Request) {
     const boom = Math.random() * 100 < game.risk;
 
     if (boom) {
-      await prisma.activeGame.delete({ where: { id: game.id } });
+      await prism.activeGame.delete({ where: { id: game.id } });
 
-      await prisma.gameLog.create({
+      await prism.gameLog.create({
         data: {
           userId: user.id,
           game: "CLICK_RISK",
@@ -76,7 +78,7 @@ export async function POST(req: Request) {
     const earned = game.earned + 2;
     const risk = game.risk + 5;
 
-    await prisma.activeGame.update({
+    await prism.activeGame.update({
       where: { id: game.id },
       data: {
         clicks: { increment: 1 },
@@ -98,13 +100,13 @@ export async function POST(req: Request) {
     if (!game)
       return NextResponse.json({ error: "No active game" });
 
-    await prisma.$transaction([
-      prisma.user.update({
+    await prism.$transaction([
+      prism.user.update({
         where: { id: user.id },
         data: { balance: { increment: game.earned } }
       }),
-      prisma.activeGame.delete({ where: { id: game.id } }),
-      prisma.transaction.create({
+      prism.activeGame.delete({ where: { id: game.id } }),
+      prism.transaction.create({
         data: {
           userId: user.id,
           amount: game.earned,
@@ -112,7 +114,7 @@ export async function POST(req: Request) {
           description: "Click Risk - Cashout"
         }
       }),
-      prisma.gameLog.create({
+      prism.gameLog.create({
         data: {
           userId: user.id,
           game: "CLICK_RISK",

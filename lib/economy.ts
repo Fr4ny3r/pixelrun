@@ -1,5 +1,5 @@
 export const GAME_COSTS = {
-  CLICK_RISK: 2,
+  CLICK_RISK: 10,
   DOUBLE: 2,
 } as const;
 

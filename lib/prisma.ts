@@ -13,6 +13,6 @@ export const prisma =
     ? globalThis.prismaGlobal ?? prismaClientSingleton()
     : null;
 
-if (process.env.NODE_ENV !== "production" && typeof window === "undefined") {
-  globalThis.prismaGlobal = prisma;
-}
+// if (process.env.NODE_ENV !== "production" && typeof window === "undefined") {
+//   globalThis?.prismaGlobal = prisma;
+// }

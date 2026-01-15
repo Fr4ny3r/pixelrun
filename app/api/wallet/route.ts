@@ -9,11 +9,14 @@ export async function GET() {
     return new Response("Unauthorized", { status: 401 });
   }
 
-  const user = await prisma.user.findUnique({
+  let prism : any = prisma;
+  
+
+  const user = await prism.user.findUnique({
     where: { email: session.user.email },
   });
 
-  const wallet = await prisma.wallet.findUnique({
+  const wallet = await prism.wallet.findUnique({
     where: { userId: user!.id },
   });
 

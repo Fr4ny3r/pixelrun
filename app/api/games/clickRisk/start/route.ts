@@ -12,14 +12,24 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  let prism : any = prisma;
+  
+
+  const userId = session.user.id;
+  const verifiedSessionActive = await prism.gameSession.findFirst({
+    where: { userId, status: "ACTIVE" },
+    orderBy: {startedAt: 'desc'},
+  });
+
+  if (verifiedSessionActive != null) return NextResponse.json({ gameSession: verifiedSessionActive,  estado: "ya tienes una session activa" })
+
   const { clientSeed } = await req.json();
   const serverSeed = crypto.randomUUID();
   const nonce = 1;
 
   const COST = GAME_COSTS.CLICK_RISK; // 2
-  const userId = session.user.id;
 
-  const gameSession = await prisma.$transaction(async (tx) => {
+  const gameSession = await prism.$transaction(async (tx : any) => {
   // 1️⃣ Verificar balance
   const wallet = await tx.wallet.findUnique({
     where: { userId },
@@ -30,21 +40,13 @@ export async function POST(req: Request) {
   }
 
   // 2️⃣ Cobrar
-  await tx.wallet.update({
+  await tx.wallet.updateMany({
     where: { userId },
     data: {
       balance: { decrement: COST },
     },
   });
 
-  // 3️⃣ Registrar transacción (CARGO)
-  await tx.transaction.create({
-    data: {
-      userId,
-      amount: -COST,
-      type: "Costo por jugar: Click y gana!",
-    },
-  });
 
   // 4️⃣ Crear sesión de juego
   const gameSession = await tx.gameSession.create({
@@ -52,6 +54,7 @@ export async function POST(req: Request) {
       userId,
       gameType: "CLICK_Y_GANA",
       gameCost: -COST,
+      percentLoss: 0,
       gameReward: 2,
       status: "ACTIVE",
       clientSeed: clientSeed || crypto.randomUUID(),
@@ -60,7 +63,20 @@ export async function POST(req: Request) {
     },
   });
 
+
+  await tx.transaction.create({
+    data: {
+      userId,
+      amount: -COST,
+      type: "Cobro: Click y gana!",
+      gameSessionId: gameSession.id,
+    },
+  });
   return gameSession;
 });
- return NextResponse.json({ "Game Session Create": gameSession });
+
+
+
+
+ return NextResponse.json({ gameSession: gameSession, estado: null, porcentajePerdida : gameSession.percentLoss });
 }

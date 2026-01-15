@@ -3,14 +3,16 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { useRouter } from 'next/navigation';
 
 const WalletContext = createContext({
   balance: 0,
   updateBalance: (newBalance: number) => {},
-  refresh: () => {}
+  refresh: () => {},
 });
 
 export function WalletProvider({ children }: { children: ReactNode }) {
+  const router = useRouter();
   const [balance, setBalance] = useState(0);
 
   const fetchBalance = async () => {
@@ -26,7 +28,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   useEffect(() => { fetchBalance(); }, []);
 
   return (
-    <WalletContext.Provider value={{ balance, updateBalance: setBalance, refresh: fetchBalance() }}>
+    <WalletContext.Provider value={{ balance, updateBalance: setBalance, refresh: fetchBalance }}>
       {children}
     </WalletContext.Provider>
   );

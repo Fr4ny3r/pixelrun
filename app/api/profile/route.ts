@@ -13,9 +13,12 @@ export async function GET() {
       { status: 401 }
     );
   }
+  
+  let prism : any = prisma;
+
 
   // 1️⃣ Usuario (solo lo que quieres exponer)
-  const user = await prisma.user.findUnique({
+  const user = await prism.user.findUnique({
     where: {
       email: session.user.email,
     },
@@ -34,7 +37,7 @@ export async function GET() {
   }
 
   // 2️⃣ Wallet (solo balance)
-  const wallet = await prisma.wallet.findUnique({
+  const wallet = await prism.wallet.findUnique({
     where: {
       userId: session.user.id, // o userId si así lo tienes
     },
@@ -44,7 +47,7 @@ export async function GET() {
   });
 
   // 3️⃣ Transacciones (limpias)
-  const transactions = await prisma.transaction.findMany({
+  const transactions = await prism.transaction.findMany({
     where: {
       userId: session.user.id,
     },

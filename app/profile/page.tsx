@@ -11,10 +11,11 @@ import { useWallet } from '@/app/components/WalletContext'
 
 
 export default function App() {
-  const [dataProfile, setDataProfile] = useState(null);
-  const [balance, setBalance] = useState<object>({});
-  const [transaction, setTransaction] = useState<Array[]>([]);
+  const [dataProfile, setDataProfile] = useState<any>(null);
+  const [balance, setBalance] = useState<any>(null);
+  const [transaction, setTransaction] = useState<any>(null);
   const { updateBalance, refresh } = useWallet();
+
 
 
   function PixelFrame({ children }: { children: React.ReactNode }) {
@@ -44,10 +45,10 @@ export default function App() {
     return (
       <button
         onClick={onClick}
-        className="relative p-3 font-bold hover:brightness-130 transition"
+        className="fixed bottom-0 left-0 text-2xl w-full sm:w-fit sm:relative font-bold hover:brightness-130 transition"
         style={{ color }}
       >
-        <div className="relative py-5 px-4">
+        <div className="relative py-2 sm:py-5 px-4">
           <div className="verticalStick absolute left-0 top-0 w-1 h-full py-2">
             <div className="w-full h-full bg-[var(--primary-red)]"></div>
           </div>
@@ -81,9 +82,9 @@ export default function App() {
       const userProfile = await profile.json();
       setBalance(userProfile.wallet);
       setDataProfile(userProfile.user);
-      setTransaction(userProfile.transactions)
-      await updateBalance(balance.balance)
-      await refresh()
+      setTransaction(userProfile.transactions);
+      await updateBalance(balance);
+      await refresh();
     }
     catch {
 
@@ -116,10 +117,10 @@ export default function App() {
                 <div className="horizontalStick absolute left-0 bottom-0 w-full h-3 px-2">
                   <div className="w-full h-full bg-[var(--foreground)]"></div>
                 </div>
-                <div className="horizontalStick lg:px-7 absolute left-0 top-0 w-full h-30 mt-1 px-2">
+                <div className="horizontalStick z-100 lg:px-7 absolute left-0 top-0 w-full h-30 mt-1 px-2">
                   <div className="lg:-mx-5 flex justify-between items-center px-6 h-full bg-[var(--foreground)]">
                     <p className="text-[var(--background)] w-full h-30 text-3xl py-1 justify-start font-bold scale-101 flex items-center gap-2 ">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><title xmlns="">coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
                       Balance:
                       <div className="relative py-5 px-4 text-4xl">
                         <div className="verticalStick absolute left-0 top-0 w-1 h-full py-2">
@@ -144,14 +145,14 @@ export default function App() {
                       </div>
                     </p> 
                   <PixelButton color="var(--primary-red)" onClick={() => signOut({ callbackUrl: "/" })}>
-                    Salir <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title xmlns="">arrow-bar-right</title><path fill="currentColor" d="M18 4v16h2V4zM4 11v2h8v2h-2v2h2v-2h2v-2h2v-2h-2V9h-2V7h-2v2h2v2z"/></svg>
+                    Salir <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>arrow-bar-right</title><path fill="currentColor" d="M18 4v16h2V4zM4 11v2h8v2h-2v2h2v-2h2v-2h2v-2h-2V9h-2V7h-2v2h2v2z"/></svg>
                   </PixelButton>
                   </div>
 
                   {/*Contenido*/}
                     <span className="p-4 text-3xl flex flex-col md:flex-row md:justify-between my-10">
                       <p className="font-bold relative w-fit uppercase max-w-150 ">
-                        <div className="absolute w-13/12 h-2 left-0 top-13/12">
+                        <div className="absolute hidden sm:block w-13/12 h-2 left-0 top-13/12">
                           <div className="relative w-full h-full flex">
                             <div className="relative top-0   left-0 h-2 w-2 bg-[var(--foreground)]/90 w-"></div>
                             <div className="relative top-1/1 left-0 h-2 w-4 bg-[var(--foreground)]/90 w-"></div>
@@ -179,7 +180,7 @@ export default function App() {
                         </div>
                         <p className="line-clamp-2">
                           
-                        hola, {dataProfile?.name}
+                        hola, {dataProfile !== "" ? dataProfile?.name : "{Nombre}"}
                         </p>
                       </p>
                       <p className="text-[var(--foreground)]/80 text-xl md:mt-0 mt-10 -mb-5">{dataProfile?.email}</p>
@@ -187,27 +188,35 @@ export default function App() {
                     <div className="relative z-1000 flex flex-col w-full ">
                       <span className="flex items-center font-extrabold w-full h-18 px-4 text-2xl ">
                         <div className="absolute w-full h-full top-0 left-0 z-100">
-                          <div className="verticalStick absolute left-0 top-0 w-2 h-screen py-3">
+                          <div className="verticalStick absolute left-0 top-0 w-2 h-[60vh] py-3">
                             <div className="w-full h-full bg-[var(--foreground)]"></div>
                           </div>
-                          <div className="verticalStick absolute right-0 top-0 w-2 h-screen py-3">
+                          <div className="verticalStick absolute right-0 top-0 w-2 h-[60vh] py-3">
                             <div className="w-full h-full bg-[var(--foreground)]"></div>
                           </div>
-                          <div className="horizontalStick absolute left-0 top-0 w-full h-17 mt-1 px-2 z-500">
-                            <div className="w-full h-full bg-[var(--foreground)] flex items-center pl-5">
-                            <p className="absolute z-400 items-center text-3xl flex text-[var(--background)]">
+                          <div className="horizontalStick absolute right-0 top-[59vh] w-full h-3 px-2">
+                            <div className="w-full h-full bg-[var(--foreground)]"></div>
+                          </div>
+                          <div className="horizontalStick absolute left-0 top-0 w-full h-20 sm:h-17 mt-1 px-2 z-500">
+                            <div className="w-full h-full text-[var(--background)] pr-10 bg-[var(--foreground)] flex items-center justify-between flex-wrap pl-5">
+                            <p className="z-400 items-center text-3xl flex">
                               {/*<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-cashapp"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17.1 8.648a.568 .568 0 0 1 -.761 .011a5.682 5.682 0 0 0 -3.659 -1.34c-1.102 0 -2.205 .363 -2.205 1.374c0 1.023 1.182 1.364 2.546 1.875c2.386 .796 4.363 1.796 4.363 4.137c0 2.545 -1.977 4.295 -5.204 4.488l-.295 1.364a.557 .557 0 0 1 -.546 .443h-2.034l-.102 -.011a.568 .568 0 0 1 -.432 -.67l.318 -1.444a7.432 7.432 0 0 1 -3.273 -1.784v-.011a.545 .545 0 0 1 0 -.773l1.137 -1.102c.214 -.2 .547 -.2 .761 0a5.495 5.495 0 0 0 3.852 1.5c1.478 0 2.466 -.625 2.466 -1.614c0 -.989 -1 -1.25 -2.886 -1.954c-2 -.716 -3.898 -1.728 -3.898 -4.091c0 -2.75 2.284 -4.091 4.989 -4.216l.284 -1.398a.545 .545 0 0 1 .545 -.432h2.023l.114 .012a.544 .544 0 0 1 .42 .647l-.307 1.557a8.528 8.528 0 0 1 2.818 1.58l.023 .022c.216 .228 .216 .569 0 .773l-1.057 1.057" /></svg>*/}
                               Transacciones
                             </p>
+                            <span className=" flex gap-2">
+                              {/*<p>{transaction.length}</p>*/}
+                              {/*<p>/</p>*/}
+                              <p>total: {transaction.length}</p>
+                            </span>
                             </div>
                           </div>
                         </div>
                       </span>
-                      <ul className="scrollTransaction z-400 max-h-[55dvh] overflow-y-auto mx-1 flex flex-col">
+                      <ul className="scrollTransaction z-400 md:max-h-[30vh] lg:max-h-[40vh] xl:max-h-[48vh] overflow-y-auto mx-1 flex flex-col">
 
                       {transaction.length != 0 ?
                       (
-                        transaction.map((t)=>(
+                        transaction.map((t : any)=>(
                           <li className="relative min-h-22 flex flex-col sm:flex-row p-3 sm:px-12 sm:justify-between sm:items-center flex-wrap sm:flex-nowrap after:absolute after:w-11/12 after:h-1 after:bg-[var(--foreground)] after:left-1/2 after:-translate-x-1/2 after:top-11/12 after:rounded-xl">
                             <span className="flex justify-start px-3 sm:border-r-2 sm:border-[var(--foreground)]/40 min-w-10 sm:min-w-18">{t.amount >= 0 ?
                             (
@@ -256,7 +265,9 @@ export default function App() {
                             </div>
                         </div>
                       )}
+
                     </div>
+                      <div className="flex items-end hidden bg-blue-500 h-full">asd</div>
                 </div>
               </div>
           </>
@@ -278,7 +289,7 @@ export default function App() {
                 <div className="horizontalStick lg:px-7 absolute left-0 top-0 w-full h-30 mt-1 px-2">
                   <div className="lg:-mx-5 flex justify-between items-center px-6 h-full bg-[var(--foreground)]">
                     <p className="text-[var(--background)] w-full h-30 text-3xl py-1 justify-start font-bold scale-101 flex items-center gap-2 ">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><title xmlns="">coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
                       Balance:
                       <div className="relative py-5 px-4 text-4xl">
                         <div className="verticalStick absolute left-0 top-0 w-1 h-full py-2">
@@ -303,7 +314,7 @@ export default function App() {
                       </div>
                     </p> 
                   <PixelButton color="var(--primary-red)" onClick={() => signOut({ callbackUrl: "/" })}>
-                    Salir <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title xmlns="">arrow-bar-right</title><path fill="currentColor" d="M18 4v16h2V4zM4 11v2h8v2h-2v2h2v-2h2v-2h2v-2h-2V9h-2V7h-2v2h2v2z"/></svg>
+                    Salir <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>arrow-bar-right</title><path fill="currentColor" d="M18 4v16h2V4zM4 11v2h8v2h-2v2h2v-2h2v-2h2v-2h-2V9h-2V7h-2v2h2v2z"/></svg>
                   </PixelButton>
                   </div>
                     <span className="p-4 text-3xl flex flex-col md:flex-row md:justify-between my-10">

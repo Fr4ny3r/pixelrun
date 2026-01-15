@@ -1,11 +1,12 @@
 // app/api/auth/[...nextauth]/route.ts
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth"; // Importamos NextAuthOptions
 import Google from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 
-export const authOptions = {
+// Añadimos ": NextAuthOptions" para que TS valide correctamente el objeto
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma as PrismaClient),
   providers: [
     Google({
@@ -15,17 +16,17 @@ export const authOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   session: {
-    strategy: "jwt",
+    strategy: "jwt", // Ahora TS reconocerá esto como un valor válido
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: any; user: any }) {
       if (user) {
         token.id = user.id;
       }
       return token;
     },
 
-    async session({ session, token }) {
+    async session({ session, token }: { session: any; token: any }) {
       if (session.user && token.id) {
         session.user.id = token.id as string;
       }
@@ -33,17 +34,14 @@ export const authOptions = {
     },
   },
   events: {
-    async createUser({ user }) {
-      await prisma.wallet.create({
+    async createUser({ user }: { user: any }) {
+      await prisma?.wallet?.create({
         data: {
           userId: user.id,
-          balance: 10, 
+          balance: 10,
         },
       });
     },
-  },
-  httpOptions: {
-    timeout: 10000,
   },
 };
 

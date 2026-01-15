@@ -121,7 +121,7 @@ export function AuthButtons({ session }: { session: any }) {
               <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--foreground)]"></div>
             </div>
             <p className="relative font-extrabold -translate-y-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title xmlns="">home</title><path fill="currentColor" d="M14 2h-4v2H8v2H6v2H4v2H2v2h2v10h7v-6h2v6h7V12h2v-2h-2V8h-2V6h-2V4h-2zm0 2v2h2v2h2v2h2v2h-2v8h-3v-6H9v6H6v-8H4v-2h2V8h2V6h2V4z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>home</title><path fill="currentColor" d="M14 2h-4v2H8v2H6v2H4v2H2v2h2v10h7v-6h2v6h7V12h2v-2h-2V8h-2V6h-2V4h-2zm0 2v2h2v2h2v2h2v2h-2v8h-3v-6H9v6H6v-8H4v-2h2V8h2V6h2V4z"/></svg>
             </p>
           </div>
           </button>
@@ -150,7 +150,7 @@ export function AuthButtons({ session }: { session: any }) {
               <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--foreground)]"></div>
             </div>
             <p className="relative font-extrabold -translate-y-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title xmlns="">user</title><path fill="currentColor" d="M15 2H9v2H7v6h2V4h6zm0 8H9v2h6zm0-6h2v6h-2zM4 16h2v-2h12v2H6v4h12v-4h2v6H4z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>user</title><path fill="currentColor" d="M15 2H9v2H7v6h2V4h6zm0 8H9v2h6zm0-6h2v6h-2zM4 16h2v-2h12v2H6v4h12v-4h2v6H4z"/></svg>
             </p>
           </div>
           </button>
@@ -179,7 +179,7 @@ export function AuthButtons({ session }: { session: any }) {
               <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--foreground)]"></div>
             </div>
             <p className="relative font-extrabold -translate-y-2">
-              <svg xmlns="http://www.w3.org/2000/svg" className="scale-120" width="32" height="32" viewBox="0 0 24 24"><title xmlns="">gamepad</title><path fill="currentColor" d="M2 5h20v14H2zm18 12V7H4v10zM8 9h2v2h2v2h-2v2H8v-2H6v-2h2zm6 0h2v2h-2zm4 4h-2v2h2z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className="scale-120" width="32" height="32" viewBox="0 0 24 24"><title>gamepad</title><path fill="currentColor" d="M2 5h20v14H2zm18 12V7H4v10zM8 9h2v2h2v2h-2v2H8v-2H6v-2h2zm6 0h2v2h-2zm4 4h-2v2h2z"/></svg>
             </p>
           </div>
           </button>
@@ -189,7 +189,7 @@ export function AuthButtons({ session }: { session: any }) {
 
         <p className="balance opacity-0 text-3xl mt-5 py-2 w-full py-1 text-center bg-[var(--foreground)] text-[var(--background)] font-bold scale-101 flex justify-center items-center gap-2">
           <Wallet/>
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title xmlns="">coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
 
         </p>
 
@@ -277,7 +277,7 @@ export function AuthButtons({ session }: { session: any }) {
               <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--foreground)]"></div>
             </div>
             <p className="relative font-extrabold -translate-y-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title xmlns="">home</title><path fill="currentColor" d="M14 2h-4v2H8v2H6v2H4v2H2v2h2v10h7v-6h2v6h7V12h2v-2h-2V8h-2V6h-2V4h-2zm0 2v2h2v2h2v2h2v2h-2v8h-3v-6H9v6H6v-8H4v-2h2V8h2V6h2V4z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>home</title><path fill="currentColor" d="M14 2h-4v2H8v2H6v2H4v2H2v2h2v10h7v-6h2v6h7V12h2v-2h-2V8h-2V6h-2V4h-2zm0 2v2h2v2h2v2h2v2h-2v8h-3v-6H9v6H6v-8H4v-2h2V8h2V6h2V4z"/></svg>
             </p>
           </div>
           </button>
@@ -306,7 +306,7 @@ export function AuthButtons({ session }: { session: any }) {
               <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--foreground)]"></div>
             </div>
             <p className="relative font-extrabold -translate-y-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title xmlns="">user</title><path fill="currentColor" d="M15 2H9v2H7v6h2V4h6zm0 8H9v2h6zm0-6h2v6h-2zM4 16h2v-2h12v2H6v4h12v-4h2v6H4z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>user</title><path fill="currentColor" d="M15 2H9v2H7v6h2V4h6zm0 8H9v2h6zm0-6h2v6h-2zM4 16h2v-2h12v2H6v4h12v-4h2v6H4z"/></svg>
             </p>
           </div>
           </button>
@@ -335,7 +335,7 @@ export function AuthButtons({ session }: { session: any }) {
               <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--foreground)]"></div>
             </div>
             <p className="relative font-extrabold -translate-y-2">
-              <svg xmlns="http://www.w3.org/2000/svg" className="scale-120" width="32" height="32" viewBox="0 0 24 24"><title xmlns="">gamepad</title><path fill="currentColor" d="M2 5h20v14H2zm18 12V7H4v10zM8 9h2v2h2v2h-2v2H8v-2H6v-2h2zm6 0h2v2h-2zm4 4h-2v2h2z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className="scale-120" width="32" height="32" viewBox="0 0 24 24"><title>gamepad</title><path fill="currentColor" d="M2 5h20v14H2zm18 12V7H4v10zM8 9h2v2h2v2h-2v2H8v-2H6v-2h2zm6 0h2v2h-2zm4 4h-2v2h2z"/></svg>
             </p>
           </div>
           </button>
@@ -350,7 +350,7 @@ export function AuthButtons({ session }: { session: any }) {
         ):
       (
       <div className="relative w-52">
-          <button className="relative text-[var(--foreground)] hover:brightness-170 rounded-lg h-full w-full flex justify-center items-center gap-2 cursor-pointer font-bold " onClick={signIn("google",{callbackUrl:"/"})}>
+          <button className="relative text-[var(--foreground)] hover:brightness-170 rounded-lg h-full w-full flex justify-center items-center gap-2 cursor-pointer font-bold " onClick={()=>{signIn("google",{callbackUrl:"/"})}}>
           <div className="relative w-full h-full py-5 px-4 text-2xl">
             <div className="verticalStick absolute left-0 top-0 w-1 h-full py-2">
               <div className="w-full h-full bg-[var(--foreground)]"></div>

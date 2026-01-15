@@ -1,86 +1,120 @@
-import crypto from 'crypto'
+import crypto from "crypto";
 import { getServerSession } from "next-auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-
-export async function POST(req: Request) {
+export async function POST() {
   const session = await getServerSession(authOptions);
-  
-  if (!session?.user?.id) {
-		return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
 
-  function sha256(input: string) {
-    return crypto.createHash("sha256").update(input).digest("hex");
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const userId = session.user.id;
 
-    const gameSession = await prisma.gameSession.findFirst({
-      where: { status: "ACTIVE" },
-      select: {
-        id: true,
-        gameReward: true,
-        serverSeed: true,
-        clientSeed: true,
-        nonce: true,
-      }
-    });
-
- 
-  if (gameSession === null) return NextResponse.json({ estado: "no tienes una session activa" });
-
-  const id = gameSession.id;
-  const gameReward = gameSession.gameReward;
-  const serverSeed = gameSession.serverSeed;
-  const clientSeed = gameSession.clientSeed;
-  const nonce = gameSession.nonce + gameSession.nonce;
-  const endAt = new Date;
-	const hash = sha256(serverSeed + clientSeed + nonce);
-  const roll = parseInt(hash.slice(0, 8), 16) % 100;
-  const lostP = nonce+2;
+  let prism : any = prisma;
   
-  await prisma.gameSession.update({
-    where: { id },
-    data: {
-      nonce: nonce,
-    }
-  })
 
-  if (roll <= lostP){
-  	const state = "Perdiste"
-    const gameSession = await prisma.$transaction(async (tx) => {
+  const gameSession = await prism.gameSession.findFirst({
+    where: {
+      userId,
+      status: "ACTIVE",
+    },
+  });
 
-    const gameSession = await tx.gameSession.update({
-      where: { id },
-      data: {
-        result: "LOST",
-        status: "FINISHED",
-        endedAt: endAt,
-      },
-    })
-    return gameSession;
-    });
-		return NextResponse.json({ gameSession: gameSession, porcentajePerdida: lostP });
-  
-  } else{
-  	const state = "ganaste"
-    const gameSession = await prisma.$transaction(async (tx) =>{
-
-    const gameSession = await tx.gameSession.update({
-      where: { id },
-      data: {
-        gameReward: gameReward * 2,
-      },
-    })
-
-    return gameSession;
-    })
-		return NextResponse.json({ gameSession: gameSession, porcentajePerdida: lostP });
+  if (!gameSession) {
+    return NextResponse.json({ error: "No active session" }, { status: 400 });
   }
 
+  /* ==========================
+      PROVABLY FAIR RNG
+  ========================== */
+  const sha256 = (input: string) =>
+    crypto.createHash("sha256").update(input).digest("hex");
 
+  const nonce = gameSession.nonce + 1;
+  const hash = sha256(
+    gameSession.serverSeed + gameSession.clientSeed + nonce
+  );
 
+  const roll = parseInt(hash.substring(0, 8), 16) % 100;
+
+  /* ==========================
+      GAME LOGIC
+  ========================== */
+  const BASE_RISK = 3;
+  const STEP_RISK = 3;
+  const MAX_RISK = 55;
+
+  const clicks = nonce;
+  const percentLoss = Math.min(
+    BASE_RISK + clicks * STEP_RISK,
+    MAX_RISK
+  );
+
+  const BET = gameSession.gameCost;
+  const multiplier = 1 + clicks * 0.15;
+  const rewardIncrement = Math.floor(BET + multiplier);
+
+  const now = new Date();
+
+  /* ==========================
+      UPDATE NONCE FIRST
+  ========================== */
+  await prism.gameSession.update({
+    where: { id: gameSession.id },
+    data: { nonce },
+  });
+
+  /* ==========================
+      LOSE
+  ========================== */
+  if (roll < percentLoss) {
+    const finished = await prism.gameSession.update({
+      where: { id: gameSession.id },
+      data: {
+        status: "FINISHED",
+        result: "LOST",
+        percentLoss,
+        endedAt: now,
+        duration: Math.floor(
+          (now.getTime() - gameSession.startedAt.getTime()) / 1000
+        ),
+      },
+    });
+
+    await prism.transaction.updateMany({
+      where: { gameSessionId: gameSession.id },
+      data: {
+        type: "Cobro: ClickRisk (Perdido)",
+      },
+    });
+
+    return NextResponse.json({
+      gameSession: finished,
+      porcentajePerdida: percentLoss,
+      roll,
+      lost: true,
+    });
+  }
+
+  /* ==========================
+      WIN
+  ========================== */
+  const updated = await prism.gameSession.update({
+    where: { id: gameSession.id },
+    data: {
+      gameReward: { increment: rewardIncrement },
+      percentLoss,
+    },
+  });
+
+  return NextResponse.json({
+    gameSession: updated,
+    porcentajePerdida: percentLoss,
+    roll,
+    reward: rewardIncrement,
+    lost: false,
+  });
 }
