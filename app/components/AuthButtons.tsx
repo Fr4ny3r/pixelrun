@@ -92,10 +92,10 @@ export function AuthButtons({ session }: { session: any }) {
   }, [pathname]);
 
   return (
-    <div className="relative w-screen sm:-translate-x-0 -translate-x-5 z-4000 flex flex-col items-center sm:max-w-50 sm:w-50">
+    <>
       {session ?
       (
-      <>
+    <div className="relative w-screen sm:-translate-x-0 -translate-x-5 z-4000 flex flex-col items-center sm:max-w-50 sm:w-50">
       <WalletProvider>
       <div className="w-full hidden sm:flex max-w-52 w-52  justify-between">
         <Link href={"/"} className="w-fit boton1 -translate-y-100">
@@ -344,11 +344,11 @@ export function AuthButtons({ session }: { session: any }) {
       </div> 
 
       </div>
-
       </WalletProvider>
-      </>
+      </div>
         ):
       (
+      <section className="fixed top-0 left-0 z-10000 w-full h-full flex justify-center items-center bg-[var(--background)]">
       <div className="relative w-52">
           <button className="relative text-[var(--foreground)] hover:brightness-170 rounded-lg h-full w-full flex justify-center items-center gap-2 cursor-pointer font-bold " onClick={()=>{signIn("google",{callbackUrl:"/"})}}>
           <div className="relative w-full h-full py-5 px-4 text-2xl">
@@ -377,7 +377,8 @@ export function AuthButtons({ session }: { session: any }) {
           </button>
 
       </div> 
+        </section>
         )} 
-    </div>
+    </>
   )
 }

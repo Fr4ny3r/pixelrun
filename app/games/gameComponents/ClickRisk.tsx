@@ -9,6 +9,7 @@ export default function ClickRisk({url} : {url:string}) {
   const router = useRouter();
   const { updateBalance, refresh } = useWallet();
   const [sessionData, setSessionData] = useState<any>(null);
+  const [fondo, setFondo] = useState<any>(null);
   const [balance, setBalance] = useState<number>(0);
   const [sessionActive, setSessionActive] = useState<boolean>(false);
   const [porcentajePerdida, setPorcentajePerdida] = useState<any>(null);
@@ -105,6 +106,7 @@ export default function ClickRisk({url} : {url:string}) {
         setSessionActive(true);	
       }
       setSessionData(data.gameSession);
+      setFondo(data.fondo)
       setPorcentajePerdida(data || null); // Reiniciar visualmente
       setSeconds(60);
     } catch (error) {
@@ -132,7 +134,9 @@ export default function ClickRisk({url} : {url:string}) {
       const data = await res.json();
       setPorcentajePerdida(data);
       setSessionData(data.gameSession);
-      handleBottonCashout()
+      setReward(data.reward);
+      console.log(data)
+      handleBottonCashout();
     } catch (error) {
       console.error(error);
     }
@@ -340,7 +344,7 @@ export default function ClickRisk({url} : {url:string}) {
                 </div>  
                 <div className="px-2 w-70 h-29 absolute left-1/2 top-1/2 -translate-1/2 flex items-center justify-center">
 						      <h1 className="font-bold text-3xl lg:text-4xl p-5 bg-[var(--foreground)] text-[var(--background)] min-w-20 flex justify-center items-center">
-						      	{sessionData?.status === "FINISHED" ? "Perdiste :v" : (sessionData?.gameReward && sessionData?.gameReward)}
+						      	{sessionData?.status === "FINISHED" ? "Perdiste" : (sessionData?.gameReward && sessionData?.gameReward)}
 						      </h1>
 
                 </div>
@@ -367,7 +371,7 @@ export default function ClickRisk({url} : {url:string}) {
         <PixelButton color="var(--foreground)" onClick={getCLick} disabled={sessionData?.status === "FINISHED"}>
           Girar
         </PixelButton>
-        <PixelButton color="var(--foreground)" onClick={getCashout} disabled={false}>
+        <PixelButton color="var(--foreground)" onClick={getCashout} disabled={sessionData?.gameReward <= 25}>
           Retirar
         </PixelButton>
         {/*<PixelButton color="var(--foreground)" onClick={getCashout} disabled={(sessionData?.gameReward <= 5 || sessionData?.status === "FINISHED")}>
@@ -380,7 +384,7 @@ export default function ClickRisk({url} : {url:string}) {
 
       <div className="bg-[var(--foreground)]  py-3 px-2 w-full h-full  hidden sm:block">
       <div className="bg-[var(--background)]  w-full flex flex-col xl:flex-row h-full overflow-hidden">
-        <div className="h-full flex flex-col justify-between w-3/6">
+        <div className="h-full flex flex-col rotate-90 xl:rotate-0 pr-20 justify-between w-3/6">
           <div className="w-full h-full flex items-end px-2">
               <div className="relative w-74 lg:w-74 mb-14 min-h-33 top-0 left-0 z-100">
                 <div className="verticalStick absolute flex flex-col justify-center items-center translate-y-1 left-0 top-0 w-2 h-full ">
@@ -423,8 +427,8 @@ export default function ClickRisk({url} : {url:string}) {
                   </div>
                 </div>  
                 <div className="px-2 w-70 h-29 absolute left-1/2 top-1/2 -translate-1/2 flex items-center justify-center">
-                  <h1 className="font-bold text-3xl lg:text-4xl p-5 bg-[var(--foreground)] text-[var(--background)] min-w-20 flex justify-center items-center">
-                    {sessionData?.status === "FINISHED" ? "Perdiste :v" : (sessionData?.gameReward && sessionData?.gameReward)}
+                  <h1 className="font-bold -rotate-90 xl:rotate-0 text-3xl lg:text-4xl p-5 text-[var(--foreground)] min-w-20 flex justify-center items-center">
+                    {sessionData?.status === "FINISHED" ? "X" : (sessionData?.gameReward && sessionData?.gameReward)}
                   </h1>
 
                 </div>
@@ -433,12 +437,12 @@ export default function ClickRisk({url} : {url:string}) {
           <div className="w-full h-full">
           </div>
         </div>
-      	<div className="relative  py-3 flex justify-center xl:justify-end items-center  h-full w-full">
+      	<div className="relative   py-3 flex justify-center xl:justify-end items-center  h-full w-full">
           <div className="absolute  flex justify-center items-start xl:items-center w-250 h-100 xl:translate-x-1/2">
             <div className="relative w-500 h-6/3 flex justify-center items-center">
-              <div className="absolute scale-90 xl:scale-100 flex flex-col justify-center items-center">
+              <div className="absolute scale-90 xl:scale-10 flex flex-col justify-center items-center">
                 <img
-                  className=""
+                  className="relative xl:scale-700"
                   src={"/circulo.png"}  
                   alt={"circulo"}
                 />
@@ -528,6 +532,34 @@ export default function ClickRisk({url} : {url:string}) {
           </div>
         </div>
       )}
+
+        {fondo && (
+        <div className="absolute z-100 h-full top-0 w-full flex justify-center items-center text-white px-4 py-3 rounded">
+          <div className="relative w-full h-full">
+             <div className="relative w-full h-full top-0 left-0 scale-107  sm:scale-100  z-500000">
+                <div className="verticalStick absolute left-0 top-0 w-2 h-full py-3">
+                  <div className="w-full h-full bg-[var(--foreground)]"></div>
+                </div>
+                <div className="verticalStick absolute right-0 top-0 w-2 h-full py-3">
+                  <div className="w-full h-full bg-[var(--foreground)]"></div>
+                </div>
+                <div className="horizontalStick absolute left-0 bottom-0 w-full h-3 px-2">
+                  <div className="w-full h-full bg-[var(--foreground)]"></div>
+                </div>
+                <div className="horizontalStick relative left-0 top-0 w-full h-fit mt-1 px-2">
+                  <div className="w-full h-full py-2 bg-[var(--foreground)] text-[var(--background)]">
+                      Cargando...
+                  </div>
+                </div>  
+                <div className="bg-[var(--background)] px-2 h-23/24 flex justify-center items-center">
+                  Ver auncio...
+                </div>
+              </div>
+          </div>
+        </div>
+      )}
+
+
       {/* MODAL EMERGENTE */}
       {sessionActive && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50000">

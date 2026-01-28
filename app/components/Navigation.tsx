@@ -1,4 +1,5 @@
 import { getServerSession } from "next-auth"
+import AdBanner from './AdBanner';
 import { authOptions } from "../api/auth/[...nextauth]/route"
 import { AuthButtons } from "./AuthButtons" // Importa el componente que creamos arriba
 
@@ -11,7 +12,7 @@ export default async function Navigation() {
       <AuthButtons session={session} />
       <div className="absolute hidden md:block -z-100 flex flex-col justify-end items-end top-0 h-screen mt-75">
         <div className="italic w-[200px] relative h-[50dvh] flex justify-center items-center">
-          *anuncio*
+          <AdBanner dataAdSlot="5204881093" />
         </div>
       </div>
     </nav>

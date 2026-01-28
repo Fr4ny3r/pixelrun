@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 
 
 
+
 export function LayoutPage({children}:{children: React.ReactNode}) {
   return(
     <>

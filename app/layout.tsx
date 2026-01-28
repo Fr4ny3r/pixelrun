@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from 'next/script';
 // import { Geist, Geist_Mono, Inter } from "next/font/google";
 // import { Pixelify_Sans } from "next/font/google";
 import {Providers} from './Providers'
@@ -29,6 +30,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     // <html lang="en" className={`${pixelify.className}`}>
     <html lang="en" className={``}>
+    <head>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9158230735641941"
+        crossOrigin="anonymous"
+        strategy="afterInteractive"
+      />
+    </head>
       <body className="scrollTransaction relative overflow-y-auto md:overflow-y-hidden overflow-x-hidden">
         <Providers>
           <Navigation /> {/* Ahora sí funcionará como Server Component */}

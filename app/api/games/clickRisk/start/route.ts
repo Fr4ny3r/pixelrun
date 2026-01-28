@@ -13,6 +13,7 @@ export async function POST(req: Request) {
   }
 
   let prism : any = prisma;
+  const COST = GAME_COSTS.CLICK_RISK; // 2
   
 
   const userId = session.user.id;
@@ -21,13 +22,20 @@ export async function POST(req: Request) {
     orderBy: {startedAt: 'desc'},
   });
 
+  const wallet = await prism.wallet.findUnique({
+    where: { userId },
+  });
+
+  if (!wallet || wallet.balance < COST) {
+    return NextResponse.json({ fondo: true })
+  }
+
   if (verifiedSessionActive != null) return NextResponse.json({ gameSession: verifiedSessionActive,  estado: "ya tienes una session activa" })
 
   const { clientSeed } = await req.json();
   const serverSeed = crypto.randomUUID();
   const nonce = 1;
 
-  const COST = GAME_COSTS.CLICK_RISK; // 2
 
   const gameSession = await prism.$transaction(async (tx : any) => {
   // 1️⃣ Verificar balance
@@ -36,7 +44,7 @@ export async function POST(req: Request) {
   });
 
   if (!wallet || wallet.balance < COST) {
-    throw new Error("INSUFFICIENT_FUNDS");
+    return NextResponse.json({ fondo: true })
   }
 
   // 2️⃣ Cobrar

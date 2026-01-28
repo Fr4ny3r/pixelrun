@@ -43,20 +43,16 @@ export async function POST() {
   /* ==========================
       GAME LOGIC
   ========================== */
-  const BASE_RISK = 3;
-  const STEP_RISK = 3;
-  const MAX_RISK = 55;
+  const BASE_RISK = 7;
+  const STEP_RISK = 12;
+  const MAX_RISK = 100;
 
   const clicks = nonce;
-  const percentLoss = Math.min(
-    BASE_RISK + clicks * STEP_RISK,
-    MAX_RISK
-  );
+  const percentLoss = Math.min(BASE_RISK + clicks * STEP_RISK,MAX_RISK)
 
   const BET = gameSession.gameCost;
-  const multiplier = 1 + clicks * 0.15;
+  const multiplier = 1 + clicks * Math.random()*15;
   const rewardIncrement = Math.floor(BET + multiplier);
-
   const now = new Date();
 
   /* ==========================
@@ -105,7 +101,7 @@ export async function POST() {
   const updated = await prism.gameSession.update({
     where: { id: gameSession.id },
     data: {
-      gameReward: { increment: rewardIncrement },
+      gameReward: { increment: Math.abs(rewardIncrement) },
       percentLoss,
     },
   });
@@ -114,7 +110,7 @@ export async function POST() {
     gameSession: updated,
     porcentajePerdida: percentLoss,
     roll,
-    reward: rewardIncrement,
+    reward: Math.abs(rewardIncrement),
     lost: false,
   });
 }
