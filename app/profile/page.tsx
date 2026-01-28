@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { signOut } from "next-auth/react"
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { AddBonus, Play } from '@/app/components/Wallet'
 import { useWallet } from '@/app/components/WalletContext'
 
 

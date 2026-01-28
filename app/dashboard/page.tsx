@@ -2,7 +2,7 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "../api/auth/[...nextauth]/route"
 import { redirect } from "next/navigation"
-import {Wallet, Play, AddBonus} from '../components/Wallet'
+import { Wallet } from '../components/Wallet'
 import { WalletProvider } from '../components/WalletContext'
 
 export default async function Dashboard() {

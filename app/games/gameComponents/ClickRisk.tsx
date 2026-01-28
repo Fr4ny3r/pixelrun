@@ -134,8 +134,6 @@ export default function ClickRisk({url} : {url:string}) {
       const data = await res.json();
       setPorcentajePerdida(data);
       setSessionData(data.gameSession);
-      setReward(data.reward);
-      console.log(data)
       handleBottonCashout();
     } catch (error) {
       console.error(error);

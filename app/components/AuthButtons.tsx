@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import { signIn } from "next-auth/react"
 import Image from 'next/image'
 import { useWallet } from './WalletContext'
-import {Wallet, Play, AddBonus} from './Wallet'
+import { Wallet } from './Wallet'
 import { gsap } from "gsap"
 
 export function AuthButtons({ session }: { session: any }) {
