@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prisma:generate": "prisma generate --schema=./packages/db/schema.prisma",
     "build": "npm run prisma:generate && next build",
     "start": "next start",
     "lint": "eslint"
