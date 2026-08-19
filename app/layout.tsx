@@ -4,7 +4,6 @@ import Script from 'next/script';
 // import { Pixelify_Sans } from "next/font/google";
 import {Providers} from './Providers'
 import Navigation from './components/Navigation'
-// @ts-expect-error CSS side-effect imports are handled by Next.js at build time.
 import "./globals.css";
 
 // const inter = Inter({ 
