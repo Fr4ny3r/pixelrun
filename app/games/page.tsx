@@ -14,15 +14,61 @@ export default async function Game() {
               desc={`!Que esperas para seguir gananado Puntos`}
               img={"./file.svg"}
             />
-{/*            <TargetGame
-              titulo={"Duplica y Gana!"}
+            <TargetGame 
+              titulo={"asdasdasdasd"}
               desc={`!Que esperas para seguir gananado Puntos`}
               img={"./file.svg"}
             />
-            <TargetGame />
-            <TargetGame />
-            <TargetGame />
-            <TargetGame />*/}
+            <TargetGame 
+              titulo={"asdasdasdasd"}
+              desc={`!Que esperas para seguir gananado Puntos`}
+              img={"./file.svg"}
+            />
+            <TargetGame 
+              titulo={"asdasdasdasd"}
+              desc={`!Que esperas para seguir gananado Puntos`}
+              img={"./file.svg"}
+            />
+            <TargetGame 
+              titulo={"asdasdasdasd"}
+              desc={`!Que esperas para seguir gananado Puntos`}
+              img={"./file.svg"}
+            />
+            <TargetGame 
+              titulo={"asdasdasdasd"}
+              desc={`!Que esperas para seguir gananado Puntos`}
+              img={"./file.svg"}
+            />
+            <TargetGame 
+              titulo={"asdasdasdasd"}
+              desc={`!Que esperas para seguir gananado Puntos`}
+              img={"./file.svg"}
+            />
+            <TargetGame 
+              titulo={"asdasdasdasd"}
+              desc={`!Que esperas para seguir gananado Puntos`}
+              img={"./file.svg"}
+            />
+            <TargetGame 
+              titulo={"asdasdasdasd"}
+              desc={`!Que esperas para seguir gananado Puntos`}
+              img={"./file.svg"}
+            />
+            <TargetGame 
+              titulo={"asdasdasdasd"}
+              desc={`!Que esperas para seguir gananado Puntos`}
+              img={"./file.svg"}
+            />
+            <TargetGame 
+              titulo={"asdasdasdasd"}
+              desc={`!Que esperas para seguir gananado Puntos`}
+              img={"./file.svg"}
+            />
+            <TargetGame 
+              titulo={"asdasdasdasd"}
+              desc={`!Que esperas para seguir gananado Puntos`}
+              img={"./file.svg"}
+            />
           </div>
         </div>
       </main>

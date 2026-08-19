@@ -43,8 +43,8 @@ export async function POST() {
   /* ==========================
       GAME LOGIC
   ========================== */
-  const BASE_RISK = 7;
-  const STEP_RISK = 12;
+  const BASE_RISK = 2;
+  const STEP_RISK = 5;
   const MAX_RISK = 100;
 
   const clicks = nonce;
@@ -61,6 +61,14 @@ export async function POST() {
   await prism.gameSession.update({
     where: { id: gameSession.id },
     data: { nonce },
+  });
+
+    /* ==========================
+      UPDATE click count + 1
+  ========================== */
+  await prism.gameSession.update({
+    where: { id: gameSession.id },
+    data: { clickCount: nonce },
   });
 
   /* ==========================

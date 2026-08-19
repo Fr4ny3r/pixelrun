@@ -28,6 +28,7 @@ export async function POST(req: Request) {
   }
 
   const amount = gameSession.gameReward;
+  const now = new Date();
 
   // if (amount <= 0) {
   //   return NextResponse.json({ error: "Nothing to cashout" }, { status: 400 });
@@ -39,6 +40,10 @@ export async function POST(req: Request) {
       data: {
         status: "FINISHED",
         result: "CASHOUT",
+        endedAt: now,
+        duration: Math.floor(
+          (now.getTime() - gameSession.startedAt.getTime()) / 1000
+        ),
       },
     });
 
