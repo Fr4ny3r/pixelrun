@@ -32,13 +32,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html 
     lang="en" className={``}>
     <head>
-      <meta name="google-adsense-account" content="ca-pub-9158230735641941" />
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9158230735641941"
-        crossOrigin="anonymous"
-        strategy="afterInteractive"
-      />
+      <meta name="google-adsense-account" content="ca-pub-9158230735641941"></meta>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9158230735641941"
+      crossOrigin="anonymous"></script>
     </head>
       <body className="scrollTransaction relative overflow-y-auto md:overflow-y-hidden overflow-x-hidden">
         <Providers>

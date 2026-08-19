@@ -1,5 +1,6 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+import AdBanner from "./components/AdBanner";
 
 export default async function App() {
   const session = await getServerSession(authOptions);
@@ -41,7 +42,7 @@ export default async function App() {
             </div> 
 
              <div className=" sm:col-span-2  flex justify-center items-center sm:row-span-3 sm:col-start-4 sm:row-start-3 relative">
-              *anuncio*
+              <AdBanner dataAdSlot="5204881093" />
             {/* <div className="relative w-full h-full top-0 left-0 z-100">
 
                 <div className="horizontalStick absolute left-0 top-1/2 mt-2 translate-y-1/2 w-full h-10 px-2">
