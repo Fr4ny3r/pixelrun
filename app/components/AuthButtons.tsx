@@ -95,9 +95,9 @@ export function AuthButtons({ session }: { session: any }) {
     <>
       {session ?
       (
-    <div className="relative w-screen sm:-translate-x-0 -translate-x-5 z-4000 flex flex-col items-center sm:max-w-50 sm:w-50">
+    <div className="relative w-screen sm:-translate-x-0 bg-[var(--foreground)] sm:bg-[var(--background)] -translate-x-5 z-4000 flex flex-col items-center sm:max-w-50 sm:w-50">
       <WalletProvider>
-      <div className="w-full hidden sm:flex max-w-52 w-52  justify-between">
+      <div className="w-full hidden sm:flex max-w-52 w-52 justify-between">
         <Link href={"/"} className="w-fit boton1 -translate-y-100">
         <div className="relative cursor-pointer hover:brightness-110 flex justify-center gap-2 items-center text-center py-2 text-sm font-bold truncate transition">
           <button className="relative text-[var(--foreground)] hover:brightness-170 rounded-lg h-14 flex justify-center items-center gap-2 cursor-pointer font-bold ">
@@ -187,16 +187,29 @@ export function AuthButtons({ session }: { session: any }) {
       </Link>
       </div>     
 
-        <p className="balance opacity-0 text-3xl mt-5 py-2 w-full py-1 text-center bg-[var(--foreground)] text-[var(--background)] font-bold scale-101 flex justify-center items-center gap-2">
+        <p className="balance hidden md:flex opacity-0 text-3xl mt-5 py-2 w-full py-1 text-center bg-[var(--foreground)] text-[var(--background)] font-bold scale-101 flex justify-center items-center gap-2">
           <Wallet/>
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
-
         </p>
 
-        <div className="flex flex-col relative left-0 items-center gap-7 justify-around">
+        <div className="flex flex relative left-0 items-center justify-between w-full">
 
+        <p className="balance md:hidden flex opacity-0 text-2xl sm:mt-5 py-2 w-full py-1 text-center bg-[var(--foreground)] text-[var(--background)] font-bold flex justify-center items-center gap-1">
+            <div className="btnPerfil name opacity-0 relative flex gap-4 w-fit h-fit justify-around items-center p-3 py-4">
+                  <div className="absolute top-1/2  left-1/2 -translate-1/2 w-1 h-1"></div>
+                  <span className="uppercase truncate text-left z-500 max-w-25 font-bold flex flex-col w-fit">
+                    {session.user?.name?.split(" ")[0]}
+                    {/* {session.user?.name?.split(" ")[1]} */}
+                  </span>
+                  {/* {session.user?.image && (
+                    <Image src={session.user.image} alt="User" width={45} height={45} className="z-500 max-h-18 max-w-18 outline-2 outline-[var(--foreground)] " />
+                  )}           */}
+            </div> 
+          {/* <Wallet/> */}
+          {/* <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg> */}
+        </p>
 
-        <div className="relative mt-5 h-35 w-50">
+        <div className="relative hidden md:block  mt-5 h-35 w-50">
               <div className="absolute w-full h-full top-0 left-0 z-100">
                 <div className="verticalStick absolute left-0 top-0 w-2 h-full py-3">
                   <div className="w-full h-full bg-[var(--foreground)]"></div>
@@ -253,28 +266,30 @@ export function AuthButtons({ session }: { session: any }) {
           </div>
         </div>
 
-      <div className="w-full sm:hidden block max-w-52 w-52 pt-4 gap-6 flex justify-center">
+      <div className="w-screen sm:hidden  scale-70 block gap-6 flex  justify-end">
+
+
         <Link href={"/"} className="w-fit boton1 -translate-y-100">
         <div className="relative cursor-pointer hover:brightness-110 flex scale-120 justify-center gap-2 items-center text-center py-2 text-sm font-bold truncate transition">
-          <button className="relative text-[var(--foreground)] hover:brightness-170 rounded-lg h-14 flex justify-center items-center gap-2 cursor-pointer font-bold ">
+          <button className="relative text-[var(--background)] hover:brightness-170 rounded-lg h-14 flex justify-center items-center gap-2 cursor-pointer font-bold ">
           <div className="relative py-5 px-4 text-2xl">
             <div className="verticalStick absolute left-0 top-0 w-1 h-full py-2">
-              <div className="w-full h-full bg-[var(--foreground)]"></div>
+              <div className="w-full h-full bg-[var(--background)]"></div>
             </div>
             <div className="verticalStick absolute right-0 top-0 w-1 h-full py-2">
-              <div className="w-full h-full bg-[var(--foreground)]"></div>
+              <div className="w-full h-full bg-[var(--background)]"></div>
             </div>
             <div className="horizontalStick absolute left-0 top-0 w-full h-1 px-2">
-              <div className="w-full h-full rounded-r-full bg-[var(--foreground)]"></div>
-              <div className="absolute w-3 right-0 rotate-45 h-full bg-[var(--foreground)]"></div>
-              <div className="absolute w-1 left-1 h-full bg-[var(--foreground)]"></div>
+              <div className="w-full h-full rounded-r-full bg-[var(--background)]"></div>
+              <div className="absolute w-3 right-0 rotate-45 h-full bg-[var(--background)]"></div>
+              <div className="absolute w-1 left-1 h-full bg-[var(--background)]"></div>
             </div>
             <div className="horizontalStick absolute left-0 bottom-0 w-full h-1 px-2">
-              <div className="-translate-y-4 w-full h-5 bg-[var(--foreground)]"></div>
-              <div className="absolute w-3 left-0 rotate-45 -translate-y-6 h-1 bg-[var(--foreground)]"></div>
-              <div className="absolute w-2 left-0 rotate-45 -translate-y-10 h-1 bg-[var(--foreground)]"></div>
-              <div className="absolute w-1 right-1 h-5 -translate-y-10 bg-[var(--foreground)]"></div>
-              <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--foreground)]"></div>
+              <div className="-translate-y-4 w-full h-5 bg-[var(--background)]"></div>
+              <div className="absolute w-3 left-0 rotate-45 -translate-y-6 h-1 bg-[var(--background)]"></div>
+              <div className="absolute w-2 left-0 rotate-45 -translate-y-10 h-1 bg-[var(--background)]"></div>
+              <div className="absolute w-1 right-1 h-5 -translate-y-10 bg-[var(--background)]"></div>
+              <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--background)]"></div>
             </div>
             <p className="relative font-extrabold -translate-y-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>home</title><path fill="currentColor" d="M14 2h-4v2H8v2H6v2H4v2H2v2h2v10h7v-6h2v6h7V12h2v-2h-2V8h-2V6h-2V4h-2zm0 2v2h2v2h2v2h2v2h-2v8h-3v-6H9v6H6v-8H4v-2h2V8h2V6h2V4z"/></svg>
@@ -285,25 +300,25 @@ export function AuthButtons({ session }: { session: any }) {
       </Link>
         <Link href={"/profile"} className="w-fit boton2 -translate-y-100">
         <div className="relative cursor-pointer hover:brightness-110 flex scale-120 justify-center gap-2 items-center text-center py-2 text-sm font-bold truncate transition">
-          <button className="relative text-[var(--foreground)] hover:brightness-170 rounded-lg h-14 flex justify-center items-center gap-2 cursor-pointer font-bold ">
+          <button className="relative text-[var(--background)] hover:brightness-170 rounded-lg h-14 flex justify-center items-center gap-2 cursor-pointer font-bold ">
           <div className="relative py-5 px-4 text-2xl">
             <div className="verticalStick absolute left-0 top-0 w-1 h-full py-2">
-              <div className="w-full h-full bg-[var(--foreground)]"></div>
+              <div className="w-full h-full bg-[var(--background)]"></div>
             </div>
             <div className="verticalStick absolute right-0 top-0 w-1 h-full py-2">
-              <div className="w-full h-full bg-[var(--foreground)]"></div>
+              <div className="w-full h-full bg-[var(--background)]"></div>
             </div>
             <div className="horizontalStick absolute left-0 top-0 w-full h-1 px-2">
-              <div className="w-full h-full rounded-r-full bg-[var(--foreground)]"></div>
-              <div className="absolute w-3 right-0 rotate-45 h-full bg-[var(--foreground)]"></div>
-              <div className="absolute w-1 left-1 h-full bg-[var(--foreground)]"></div>
+              <div className="w-full h-full rounded-r-full bg-[var(--background)]"></div>
+              <div className="absolute w-3 right-0 rotate-45 h-full bg-[var(--background)]"></div>
+              <div className="absolute w-1 left-1 h-full bg-[var(--background)]"></div>
             </div>
             <div className="horizontalStick absolute left-0 bottom-0 w-full h-1 px-2">
-              <div className="-translate-y-4 w-full h-5 bg-[var(--foreground)]"></div>
-              <div className="absolute w-3 left-0 rotate-45 -translate-y-6 h-1 bg-[var(--foreground)]"></div>
-              <div className="absolute w-2 left-0 rotate-45 -translate-y-10 h-1 bg-[var(--foreground)]"></div>
-              <div className="absolute w-1 right-1 h-5 -translate-y-10 bg-[var(--foreground)]"></div>
-              <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--foreground)]"></div>
+              <div className="-translate-y-4 w-full h-5 bg-[var(--background)]"></div>
+              <div className="absolute w-3 left-0 rotate-45 -translate-y-6 h-1 bg-[var(--background)]"></div>
+              <div className="absolute w-2 left-0 rotate-45 -translate-y-10 h-1 bg-[var(--background)]"></div>
+              <div className="absolute w-1 right-1 h-5 -translate-y-10 bg-[var(--background)]"></div>
+              <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--background)]"></div>
             </div>
             <p className="relative font-extrabold -translate-y-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>user</title><path fill="currentColor" d="M15 2H9v2H7v6h2V4h6zm0 8H9v2h6zm0-6h2v6h-2zM4 16h2v-2h12v2H6v4h12v-4h2v6H4z"/></svg>
@@ -314,25 +329,25 @@ export function AuthButtons({ session }: { session: any }) {
       </Link>
         <Link href={"/games"} className="w-fit boton3 -translate-y-100">
         <div className="relative cursor-pointer hover:brightness-110 flex scale-120 justify-center gap-2 items-center text-center py-2 text-sm font-bold truncate transition">
-          <button className="relative text-[var(--foreground)] hover:brightness-170 rounded-lg h-14 flex justify-center items-center gap-2 cursor-pointer font-bold ">
+          <button className="relative text-[var(--background)] hover:brightness-170 rounded-lg h-14 flex justify-center items-center gap-2 cursor-pointer font-bold ">
           <div className="relative py-5 px-4 text-2xl">
             <div className="verticalStick absolute left-0 top-0 w-1 h-full py-2">
-              <div className="w-full h-full bg-[var(--foreground)]"></div>
+              <div className="w-full h-full bg-[var(--background)]"></div>
             </div>
             <div className="verticalStick absolute right-0 top-0 w-1 h-full py-2">
-              <div className="w-full h-full bg-[var(--foreground)]"></div>
+              <div className="w-full h-full bg-[var(--background)]"></div>
             </div>
             <div className="horizontalStick absolute left-0 top-0 w-full h-1 px-2">
-              <div className="w-full h-full rounded-r-full bg-[var(--foreground)]"></div>
-              <div className="absolute w-3 right-0 rotate-45 h-full bg-[var(--foreground)]"></div>
-              <div className="absolute w-1 left-1 h-full bg-[var(--foreground)]"></div>
+              <div className="w-full h-full rounded-r-full bg-[var(--background)]"></div>
+              <div className="absolute w-3 right-0 rotate-45 h-full bg-[var(--background)]"></div>
+              <div className="absolute w-1 left-1 h-full bg-[var(--background)]"></div>
             </div>
             <div className="horizontalStick absolute left-0 bottom-0 w-full h-1 px-2">
-              <div className="-translate-y-4 w-full h-5 bg-[var(--foreground)]"></div>
-              <div className="absolute w-3 left-0 rotate-45 -translate-y-6 h-1 bg-[var(--foreground)]"></div>
-              <div className="absolute w-2 left-0 rotate-45 -translate-y-10 h-1 bg-[var(--foreground)]"></div>
-              <div className="absolute w-1 right-1 h-5 -translate-y-10 bg-[var(--foreground)]"></div>
-              <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--foreground)]"></div>
+              <div className="-translate-y-4 w-full h-5 bg-[var(--background)]"></div>
+              <div className="absolute w-3 left-0 rotate-45 -translate-y-6 h-1 bg-[var(--background)]"></div>
+              <div className="absolute w-2 left-0 rotate-45 -translate-y-10 h-1 bg-[var(--background)]"></div>
+              <div className="absolute w-1 right-1 h-5 -translate-y-10 bg-[var(--background)]"></div>
+              <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--background)]"></div>
             </div>
             <p className="relative font-extrabold -translate-y-2">
               <svg xmlns="http://www.w3.org/2000/svg" className="scale-120" width="32" height="32" viewBox="0 0 24 24"><title>gamepad</title><path fill="currentColor" d="M2 5h20v14H2zm18 12V7H4v10zM8 9h2v2h2v2h-2v2H8v-2H6v-2h2zm6 0h2v2h-2zm4 4h-2v2h2z"/></svg>

@@ -4,6 +4,7 @@ import Script from 'next/script';
 // import { Pixelify_Sans } from "next/font/google";
 import {Providers} from './Providers'
 import Navigation from './components/Navigation'
+// @ts-expect-error CSS side-effect imports are handled by Next.js at build time.
 import "./globals.css";
 
 // const inter = Inter({ 
@@ -29,8 +30,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     // <html lang="en" className={`${pixelify.className}`}>
-    <html lang="en" className={``}>
+    <html 
+    lang="en" className={``}>
     <head>
+      <meta name="google-adsense-account" content="ca-pub-9158230735641941" />
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9158230735641941"
