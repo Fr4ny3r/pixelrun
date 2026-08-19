@@ -14,14 +14,13 @@ const AdBanner = ({ dataAdSlot, dataAdFormat = 'auto', dataFullWidthResponsive =
   }, []);
 
   return (
-    <div className="ad-container" style={{ overflow: 'hidden', textAlign: 'center' }}>
+    <div className="ad-container" style={{ textAlign: 'center' }}>
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}
         data-ad-client="ca-pub-9158230735641941" // Reemplaza con tu ID
         data-ad-slot={dataAdSlot}
         data-ad-format={dataAdFormat}
-        data-adtest="on"
         data-full-width-responsive={dataFullWidthResponsive}
       ></ins>
     </div>
