@@ -387,8 +387,9 @@ export function AuthButtons({ session }: { session: any }) {
                                 <div className="absolute w-1 right-1 h-5 -translate-y-10 bg-[var(--background)]"></div>
                                 <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--background)]"></div>
                               </div>
-                              <p className="relative font-extrabold -translate-y-2">
+                              <p className="relative flex flex-row-reverse justify-center items-center gap-3 font-extrabold -translate-y-2">
                                 Iniciar
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">google</title><path fill="currentColor" d="M23 10v5h-1v2h-1v2h-1v1h-1v1h-2v1h-2v1H9v-1H7v-1H5v-1H4v-1H3v-2H2v-2H1V9h1V7h1V5h1V4h1V3h2V2h2V1h6v1h2v1h2v2h-1v1h-1v1h-2V6H9v1H7v2H6v6h1v2h2v1h6v-1h2v-2h1v-1h-6v-4z"/></svg>
                               </p>
                             </div>
                             </button>
@@ -429,8 +430,9 @@ export function AuthButtons({ session }: { session: any }) {
                                 <div className="absolute w-1 right-1 h-5 -translate-y-10 bg-[var(--foreground)]"></div>
                                 <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--foreground)]"></div>
                               </div>
-                              <p className="relative font-extrabold py-2 -translate-y-2">
+                              <p className="relative flex flex-row-reverse justify-center items-center gap-3 font-extrabold -translate-y-2">
                                 Iniciar
+                                <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24"><title xmlns="">google</title><path fill="currentColor" d="M23 10v5h-1v2h-1v2h-1v1h-1v1h-2v1h-2v1H9v-1H7v-1H5v-1H4v-1H3v-2H2v-2H1V9h1V7h1V5h1V4h1V3h2V2h2V1h6v1h2v1h2v2h-1v1h-1v1h-2V6H9v1H7v2H6v6h1v2h2v1h6v-1h2v-2h1v-1h-6v-4z"/></svg>
                               </p>
                             </div>
                             </button>
