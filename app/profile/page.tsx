@@ -44,7 +44,7 @@ export default function App() {
     return (
       <button
         onClick={onClick}
-        className="bottom-0 left-0 text-2xl w-50 sm:w-fit sm:relative font-bold hover:brightness-130 transition"
+        className="bottom-0 left-0 text-2xl w-fit sm:w-fit sm:relative font-bold hover:brightness-130 transition"
         style={{ color }}
       >
         <div className="relative py-2 py-5 px-4">
@@ -145,9 +145,27 @@ export default function App() {
                         <span className="block font-family-[var(--font-tiny)] -translate-y-2">{balance.balance}</span>
                       </div>
                     </p> 
-                    <div className="md:invert">
+                    <div className="hidden md:flex gap-4">
+                  <PixelButton color="var(--background)" onClick={() => signOut({ callbackUrl: "/" })}>
+                    Salir <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>arrow-bar-right</title><path fill="currentColor" d="M18 4v16h2V4zM4 11v2h8v2h-2v2h2v-2h2v-2h2v-2h-2V9h-2V7h-2v2h2v2z"/></svg>
+                  </PixelButton>
+                  <PixelButton color="var(--background)" onClick={() => signOut({ callbackUrl: "/" })}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24"><title>settings-cog</title><path fill="currentColor" d="M4 20h3v-2h4v4h2v-4h4v2h-2v4H9v-4H7v2H2v-5h2zm18 2h-5v-2h3v-3h2zM6 11H2v2h4v4H4v-2H0V9h4V7h2zm14-2h4v6h-4v2h-2v-4h4v-2h-4V7h2zm-6 7h-4v-2h4zm-4-2H8v-4h2zm6 0h-2v-4h2zm-2-4h-4V8h4zM7 4H4v3H2V2h5zm8 0h2V2h5v5h-2V4h-3v2h-4V2h-2v4H7V4h2V0h6z"/></svg>
+                  </PixelButton>
+                  <PixelButton color="var(--background)" onClick={() => signOut({ callbackUrl: "/" })}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24"><title>coffee</title><path fill="currentColor" d="M4 4h16v2H4zm0 2h2v8H4zm2 8h10v2H6zm14-8h2v4h-2zm-2 4h2v2h-2zm-2-4h2v8h-2zM2 18h18v2H2z"/></svg>
+                  </PixelButton>
+                    </div>
+
+                  <div className="md:hidden flex gap-4">
                   <PixelButton color="var(--foreground)" onClick={() => signOut({ callbackUrl: "/" })}>
                     Salir <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>arrow-bar-right</title><path fill="currentColor" d="M18 4v16h2V4zM4 11v2h8v2h-2v2h2v-2h2v-2h2v-2h-2V9h-2V7h-2v2h2v2z"/></svg>
+                  </PixelButton>
+                  <PixelButton color="var(--foreground)" onClick={() => signOut({ callbackUrl: "/" })}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24"><title>settings-cog</title><path fill="currentColor" d="M4 20h3v-2h4v4h2v-4h4v2h-2v4H9v-4H7v2H2v-5h2zm18 2h-5v-2h3v-3h2zM6 11H2v2h4v4H4v-2H0V9h4V7h2zm14-2h4v6h-4v2h-2v-4h4v-2h-4V7h2zm-6 7h-4v-2h4zm-4-2H8v-4h2zm6 0h-2v-4h2zm-2-4h-4V8h4zM7 4H4v3H2V2h5zm8 0h2V2h5v5h-2V4h-3v2h-4V2h-2v4H7V4h2V0h6z"/></svg>
+                  </PixelButton>
+                  <PixelButton color="var(--foreground)" onClick={() => signOut({ callbackUrl: "/" })}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24"><title>coffee</title><path fill="currentColor" d="M4 4h16v2H4zm0 2h2v8H4zm2 8h10v2H6zm14-8h2v4h-2zm-2 4h2v2h-2zm-2-4h2v8h-2zM2 18h18v2H2z"/></svg>
                   </PixelButton>
                     </div>
 
