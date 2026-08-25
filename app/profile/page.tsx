@@ -44,27 +44,27 @@ export default function App() {
     return (
       <button
         onClick={onClick}
-        className="fixed bottom-0 left-0 text-2xl w-full sm:w-fit sm:relative font-bold hover:brightness-130 transition"
+        className="bottom-0 left-0 text-2xl w-50 sm:w-fit sm:relative font-bold hover:brightness-130 transition"
         style={{ color }}
       >
-        <div className="relative py-2 sm:py-5 px-4">
+        <div className="relative py-2 py-5 px-4">
           <div className="verticalStick absolute left-0 top-0 w-1 h-full py-2">
-            <div className="w-full h-full bg-[var(--primary-red)]"></div>
+            <div className={`w-full h-full bg-[${color}]`} ></div>
           </div>
           <div className="verticalStick absolute right-0 top-0 w-1 h-full py-2">
-            <div className="w-full h-full bg-[var(--primary-red)]"></div>
+            <div className={`w-full h-full bg-[${color}]`}></div>
           </div>
           <div className="horizontalStick absolute left-0 top-0 w-full h-1 px-2">
-            <div className="w-full h-full rounded-r-full bg-[var(--primary-red)]"></div>
-            <div className="absolute w-3 right-0 rotate-45 h-full bg-[var(--primary-red)]"></div>
-            <div className="absolute w-1 left-1 h-full bg-[var(--primary-red)]"></div>
+            <div className={`w-full h-full rounded-r-full bg-[${color}]`}></div>
+            <div className={`absolute w-3 right-0 rotate-45 h-full bg-[${color}]`}></div>
+            <div className={`absolute w-1 left-1 h-full bg-[${color}]`}></div>
           </div>
           <div className="horizontalStick absolute left-0 bottom-0 w-full h-1 px-2">
-            <div className="-translate-y-4 w-full h-5 bg-[var(--primary-red)]"></div>
-            <div className="absolute w-3 left-0 rotate-45 -translate-y-6 h-1 bg-[var(--primary-red)]"></div>
-            <div className="absolute w-2 left-0 rotate-45 -translate-y-10 h-1 bg-[var(--primary-red)]"></div>
-            <div className="absolute w-1 right-1 h-5 -translate-y-10 bg-[var(--primary-red)]"></div>
-            <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--primary-red)]"></div>
+            <div className={`-translate-y-4 w-full h-5 bg-[${color}]`}></div>
+            <div className={`absolute w-3 left-0 rotate-45 -translate-y-6 h-1 bg-[${color}]`}></div>
+            <div className={`absolute w-2 left-0 rotate-45 -translate-y-10 h-1 bg-[${color}]`}></div>
+            <div className={`absolute w-1 right-1 h-5 -translate-y-10 bg-[${color}]`}></div>
+            <div className={`absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[${color}]`}></div>
           </div>
           <span className="block flex gap-2 justify-center items-center -translate-y-2">
           {children}
@@ -108,48 +108,53 @@ export default function App() {
               {/*DecoVentana*/}
               <div className="relative w-full h-full top-0 left-0 z-100">
                 <div className="verticalStick absolute left-0 top-0 w-2 h-full py-3">
-                  <div className="w-full h-full bg-[var(--foreground)]"></div>
+                  <div className="w-full h-full bg-[var(--background)] md:bg-[var(--foreground)]"></div>
                 </div>
                 <div className="verticalStick absolute right-0 top-0 w-2 h-full py-3">
-                  <div className="w-full h-full bg-[var(--foreground)]"></div>
+                  <div className="w-full h-full bg-[var(--background)] md:bg-[var(--foreground)]"></div>
                 </div>
                 <div className="horizontalStick absolute left-0 bottom-0 w-full h-3 px-2">
-                  <div className="w-full h-full bg-[var(--foreground)]"></div>
+                  <div className="w-full h-full bg-[var(--background)] md:bg-[var(--foreground)]"></div>
                 </div>
-                <div className="horizontalStick z-100 lg:px-7 absolute left-0 top-0 w-full h-30 mt-1 px-2">
-                  <div className="lg:-mx-5 flex justify-between items-center px-6 h-full bg-[var(--foreground)]">
-                    <p className="text-[var(--background)] w-full h-30 text-3xl py-1 justify-start font-bold scale-101 flex items-center gap-2 ">
+                
+                <div className="horizontalStick z-100 lg:px-7 absolute left-0 top-0 w-full sm:h-30 mt-1 px-2">
+                  <div className="lg:-mx-5 flex flex-col-reverse sm:flex-row justify-between items-center md:px-6 h-full bg-[var(--background)] md:bg-[var(--foreground)]">
+                    <p className="text-[var(--foreground)] md:text-[var(--background)] w-full h-30 text-3xl py-1 justify-center md:justify-start font-bold scale-101 flex items-center gap-2 -ml-5 md:ml-0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
                       Balance:
-                      <div className="relative py-5 px-4 text-4xl">
+
+                      <div className="relative py-5 px-4 ml-5 text-4xl">
                         <div className="verticalStick absolute left-0 top-0 w-1 h-full py-2">
-                          <div className="w-full h-full bg-[var(--background)]"></div>
+                          <div className="w-full h-full bg-[var(--foreground)] md:bg-[var(--background)]"></div>
                         </div>
                         <div className="verticalStick absolute right-0 top-0 w-1 h-full py-2">
-                          <div className="w-full h-full bg-[var(--background)]"></div>
+                          <div className="w-full h-full bg-[var(--foreground)] md:bg-[var(--background)]"></div>
                         </div>
                         <div className="horizontalStick absolute left-0 top-0 w-full h-1 px-2">
-                          <div className="w-full h-full rounded-r-full bg-[var(--background)]"></div>
-                          <div className="absolute w-3 right-0 rotate-45 h-full bg-[var(--background)]"></div>
-                          <div className="absolute w-1 left-1 h-full bg-[var(--background)]"></div>
+                          <div className="w-full h-full rounded-r-full bg-[var(--foreground)] md:bg-[var(--background)]"></div>
+                          <div className="absolute w-3 right-0 rotate-45 h-full bg-[var(--foreground)] md:bg-[var(--background)]"></div>
+                          <div className="absolute w-1 left-1 h-full bg-[var(--foreground)] md:bg-[var(--background)]"></div>
                         </div>
                         <div className="horizontalStick absolute left-0 bottom-0 w-full h-1 px-2">
-                          <div className="-translate-y-4 w-full h-5 bg-[var(--background)]"></div>
-                          <div className="absolute w-3 left-0 rotate-45 -translate-y-6 h-1 bg-[var(--background)]"></div>
-                          <div className="absolute w-2 left-0 rotate-45 -translate-y-10 h-1 bg-[var(--background)]"></div>
-                          <div className="absolute w-1 right-1 h-5 -translate-y-10 bg-[var(--background)]"></div>
-                          <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--background)]"></div>
+                          <div className="-translate-y-4 w-full h-5 bg-[var(--foreground)] md:bg-[var(--background)]"></div>
+                          <div className="absolute w-3 left-0 rotate-45 -translate-y-6 h-1 bg-[var(--foreground)] md:bg-[var(--background)]"></div>
+                          <div className="absolute w-2 left-0 rotate-45 -translate-y-10 h-1 bg-[var(--foreground)] md:bg-[var(--background)]"></div>
+                          <div className="absolute w-1 right-1 h-5 -translate-y-10 bg-[var(--foreground)] md:bg-[var(--background)]"></div>
+                          <div className="absolute w-1 left-1 h-4 -translate-y-9 rounded-b-full bg-[var(--foreground)] md:bg-[var(--background)]"></div>
                         </div>
                         <span className="block font-family-[var(--font-tiny)] -translate-y-2">{balance.balance}</span>
                       </div>
                     </p> 
-                  <PixelButton color="var(--primary-red)" onClick={() => signOut({ callbackUrl: "/" })}>
+                    <div className="md:invert">
+                  <PixelButton color="var(--foreground)" onClick={() => signOut({ callbackUrl: "/" })}>
                     Salir <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>arrow-bar-right</title><path fill="currentColor" d="M18 4v16h2V4zM4 11v2h8v2h-2v2h2v-2h2v-2h2v-2h-2V9h-2V7h-2v2h2v2z"/></svg>
                   </PixelButton>
+                    </div>
+
                   </div>
 
                   {/*Contenido*/}
-                    <span className="p-4 text-3xl flex flex-col md:flex-row md:justify-between my-10">
+                    <span className="p-4 text-3xl hidden md:flex flex-col md:flex-row md:justify-between my-10">
                       <p className="font-bold relative w-fit uppercase max-w-150 ">
                         <div className="absolute hidden sm:block w-13/12 h-2 left-0 top-13/12">
                           <div className="relative w-full h-full flex">
@@ -184,7 +189,36 @@ export default function App() {
                       </p>
                       <p className="text-[var(--foreground)]/80 text-xl md:mt-0 mt-10 -mb-5">{dataProfile?.email}</p>
                     </span>
-                    <div className="relative z-1000 flex flex-col w-full ">
+                      <span className="font-bold text-lg flex md:hidden">transacciones:</span>
+                    <ul className="flex flex-col md:hidden w-full h-fit overflow-y-auto gap-2">
+                      {transaction.length != 0 ?
+                      (
+                        transaction.map((t : any)=>(
+                          <li className="relative min-h-22 flex flex-col sm:flex-row p-3 sm:px-12 sm:justify-between sm:items-center flex-wrap sm:flex-nowrap after:absolute after:w-11/12 after:h-1 after:bg-[var(--foreground)] after:left-1/2 after:-translate-x-1/2 after:top-11/12 after:rounded-xl">
+                            <span className="flex justify-start px-3 sm:border-r-2 sm:border-[var(--foreground)]/40 min-w-10 sm:min-w-18">{t.amount >= 0 ?
+                            (
+                              <><span className="text-[color-mix(in_srgb,var(--primary-green),black_50%)]">+{t.amount}</span></>
+                              // <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0cb800" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+                              ) :
+                            (
+                              <span className="text-[color-mix(in_srgb,var(--primary-red),black_50%)] ">{t.amount}</span>
+                              // <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-circle-minus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M9 12l6 0" /></svg>
+                              )}
+                          </span>
+                            <p className="line-clamp-2 sm:border-r-2 sm:border-[var(--foreground)]/40 pl-3 max-w-35 sm:max-w-full sm:w-full">{t.type}</p>
+                            <span className=" min-w-28 md:min-w-30 lg:min-w-35 pl-3 underline absolute right-5 flex items-center justify-center h-full sm:relative sm:border-r-2 sm:border-[var(--foreground)]/40 ">Detalles</span>
+                            <p className="truncate min-w-25 sm:min-w-28 pl-3 sm:pl-0 sm:-mx-4 lg:-mx-3 lg:min-w-32 pl-0">{t.createdAt.split("T")[0]}</p>
+                          </li>
+
+                        ))
+                      ) :
+                      (
+                        <></>
+                      )
+                      }
+                    </ul>
+
+                    <div className="relative z-1000 hidden md:flex flex-col w-full ">
                       <span className="flex items-center font-extrabold w-full h-18 px-4 text-2xl ">
                         <div className="absolute w-full h-full top-0 left-0 z-100">
                           <div className="verticalStick absolute left-0 top-0 w-2 h-[60vh] py-3">
@@ -238,6 +272,7 @@ export default function App() {
                         <></>
                       )
                       }
+
                       </ul>
                       {transaction.length != 0 ? (<></>) : (
                         <div className="relative flex flex-col items-center justify-center relative left-1/2 top-0 -translate-x-1/2 w-23/24 h-[43dvh]">
@@ -289,7 +324,7 @@ export default function App() {
                   <div className="lg:-mx-5 flex justify-between items-center px-6 h-full bg-[var(--foreground)]">
                     <p className="text-[var(--background)] w-full h-30 text-3xl py-1 justify-start font-bold scale-101 flex items-center gap-2 ">
                       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
-                      Balance:
+                      Balanceasd:
                       <div className="relative py-5 px-4 text-4xl">
                         <div className="verticalStick absolute left-0 top-0 w-1 h-full py-2">
                           <div className="w-full h-full bg-[var(--background)]"></div>
@@ -312,9 +347,9 @@ export default function App() {
                         <span className="block font-family-[var(--font-tiny)] -translate-y-2">000</span>
                       </div>
                     </p> 
-                  <PixelButton color="var(--primary-red)" onClick={() => signOut({ callbackUrl: "/" })}>
-                    Salir <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>arrow-bar-right</title><path fill="currentColor" d="M18 4v16h2V4zM4 11v2h8v2h-2v2h2v-2h2v-2h2v-2h-2V9h-2V7h-2v2h2v2z"/></svg>
-                  </PixelButton>
+                    <PixelButton color="var(--background)" onClick={() => signOut({ callbackUrl: "/" })}>
+                      Salir <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>arrow-bar-right</title><path fill="currentColor" d="M18 4v16h2V4zM4 11v2h8v2h-2v2h2v-2h2v-2h2v-2h-2V9h-2V7h-2v2h2v2z"/></svg>
+                    </PixelButton>
                   </div>
                     <span className="p-4 text-3xl flex flex-col md:flex-row md:justify-between my-10">
                       <p className="font-bold relative w-fit uppercase">

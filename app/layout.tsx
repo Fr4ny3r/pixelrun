@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9158230735641941"
       crossOrigin="anonymous"></script>
     </head>
-      <body className="scrollTransaction relative overflow-y-auto md:overflow-y-hidden overflow-x-hidden">
+      <body className="scrollTransaction relative md:overflow-y-hidden overflow-x-hidden">
         <Providers>
           <Navigation /> {/* Ahora sí funcionará como Server Component */}
           <main className="">{children}</main>
