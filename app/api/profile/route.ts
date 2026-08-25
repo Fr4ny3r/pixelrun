@@ -25,7 +25,7 @@ export async function GET() {
     select: {
       name: true,
       email: true,
-      // image: true (si quieres)
+      image: true
     },
   });
 

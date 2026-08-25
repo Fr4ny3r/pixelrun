@@ -119,6 +119,20 @@ export default function App() {
                 
                 <div className="horizontalStick z-100 lg:px-7 absolute left-0 top-0 w-full sm:h-30 mt-1 px-2">
                   <div className="lg:-mx-5 flex flex-col-reverse sm:flex-row justify-between items-center md:px-6 h-full bg-[var(--background)] md:bg-[var(--foreground)]">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[var(--foreground)] mb-4 -mt-4 sm:mt-0 sm:mb-0 flex sm:hidden items-center justify-center gap-8 w-full sm:w-30 h-30 md:mr-4 md:text-[var(--background)]">
+                        <Image
+                          src={dataProfile?.image}
+                          alt="Profile Image"
+                          width={80}
+                          height={80}
+                          className="scale-130 md:scale-100 "
+                        />
+                        <p className="sm:hidden flex text-[var(--foreground)] w-3/5 md:text-[var(--background)] text-lg font-semibold">
+                          {dataProfile?.name}
+                        </p>
+                      </span>
+                    </div>
                     <p className="text-[var(--foreground)] md:text-[var(--background)] w-full h-30 text-3xl py-1 justify-center md:justify-start font-bold scale-101 flex items-center gap-2 -ml-5 md:ml-0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
                       Balance:
