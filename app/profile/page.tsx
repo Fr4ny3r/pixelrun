@@ -126,7 +126,7 @@ export default function App() {
                           alt="Profile Image"
                           width={80}
                           height={80}
-                          className="scale-130 md:scale-100 "
+                          className="scale-110 md:scale-100 "
                         />
                         <p className="sm:hidden flex text-[var(--foreground)] w-3/5 md:text-[var(--background)] text-lg font-semibold">
                           {dataProfile?.name}
@@ -356,7 +356,7 @@ export default function App() {
                   <div className="lg:-mx-5 flex justify-between items-center px-6 h-full bg-[var(--foreground)]">
                     <p className="text-[var(--background)] w-full h-30 text-3xl py-1 justify-start font-bold scale-101 flex items-center gap-2 ">
                       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
-                      Balanceasd:
+                      Balance:
                       <div className="relative py-5 px-4 text-4xl">
                         <div className="verticalStick absolute left-0 top-0 w-1 h-full py-2">
                           <div className="w-full h-full bg-[var(--background)]"></div>
