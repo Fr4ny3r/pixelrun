@@ -15,7 +15,14 @@ export default function App() {
   const [transaction, setTransaction] = useState<any>(null);
   const { updateBalance, refresh } = useWallet();
 
-
+  const nivel = [
+    {level: 1, progress: 20, comleted: true}, 
+    {level: 2, progress: 40, comleted: true},
+    {level: 3, progress: 60, comleted: true},
+    {level: 4, progress: 80, comleted: false},
+    {level: 5, progress: 100, comleted: false},
+    {level: 6, progress: 120, comleted: false}
+  ];
 
   function PixelFrame({ children }: { children: React.ReactNode }) {
   return (
@@ -117,10 +124,10 @@ export default function App() {
                   <div className="w-full h-full bg-[var(--background)] md:bg-[var(--foreground)]"></div>
                 </div>
                 
-                <div className="horizontalStick z-100 lg:px-7 absolute left-0 top-0 w-full sm:h-30 mt-1 px-2">
+                <div className="horizontalStick z-100 lg:px-7 absolute left-0 top-0 w-full sm:h-30 px-2">
                   <div className="lg:-mx-5 flex flex-col-reverse sm:flex-row justify-between items-center md:px-6 h-full bg-[var(--background)] md:bg-[var(--foreground)]">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[var(--foreground)] mb-4 -mt-4 sm:mt-0 sm:mb-0 flex sm:hidden items-center justify-center gap-8 w-full sm:w-30 h-30 md:mr-4 md:text-[var(--background)]">
+                    <div className="flex flex-col items-center gap-2">
+                      <span className="text-[var(--foreground)] -mt-4 sm:mt-0 sm:mb-0 flex sm:hidden items-center justify-center gap-8 w-full sm:w-30 h-30 md:mr-4 md:text-[var(--background)]">
                         <Image
                           src={dataProfile?.image}
                           alt="Profile Image"
@@ -131,7 +138,18 @@ export default function App() {
                         <p className="sm:hidden flex text-[var(--foreground)] w-3/5 md:text-[var(--background)] text-lg font-semibold">
                           {dataProfile?.name}
                         </p>
+                        
                       </span>
+                      <div className="flex flex-col text-3xl font-black gap-2 sm:hidden items-center w-full h-30">
+                        <span>Level {` ${nivel.filter((n: any) => n.comleted).length} `}</span>
+                        <div className="flex items-center justify-center gap-2 px-4 w-full h-10">
+                          {nivel.map((n: any, index: number) => (
+                            <div key={index} className={n.comleted ? "w-full h-5 border-2 border-[var(--foreground)] bg-[var(--foreground)] flex items-center justify-center" : "w-full h-5 border-2 border-[var(--foreground)] bg-[var(--background)] flex items-center justify-center"}>
+                              <span></span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                     <p className="text-[var(--foreground)] md:text-[var(--background)] w-full h-30 text-3xl py-1 justify-center md:justify-start font-bold scale-101 flex items-center gap-2 -ml-5 md:ml-0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
@@ -148,7 +166,7 @@ export default function App() {
                           <div className="w-full h-full rounded-r-full bg-[var(--foreground)] md:bg-[var(--background)]"></div>
                           <div className="absolute w-3 right-0 rotate-45 h-full bg-[var(--foreground)] md:bg-[var(--background)]"></div>
                           <div className="absolute w-1 left-1 h-full bg-[var(--foreground)] md:bg-[var(--background)]"></div>
-                        </div>
+                        </div> 
                         <div className="horizontalStick absolute left-0 bottom-0 w-full h-1 px-2">
                           <div className="-translate-y-4 w-full h-5 bg-[var(--foreground)] md:bg-[var(--background)]"></div>
                           <div className="absolute w-3 left-0 rotate-45 -translate-y-6 h-1 bg-[var(--foreground)] md:bg-[var(--background)]"></div>
@@ -333,7 +351,7 @@ export default function App() {
                       )}
 
                     </div>
-                      <div className="flex items-end hidden bg-blue-500 h-full">asd</div>
+                      <div className="flex items-end hidden bg-blue-500 h-full"></div>
                 </div>
               </div>
           </>

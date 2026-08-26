@@ -105,7 +105,6 @@ export function AuthButtons({ session }: { session: any }) {
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
           </p>
     <div className="relative w-screen sm:-translate-x-0 bg-[var(--foreground)] sm:bg-[var(--background)] -translate-x-5 z-4000 flex flex-col items-center sm:max-w-50 sm:w-50">
-
       <div className="w-full hidden sm:flex max-w-52 w-52 justify-between">
         <Link href={"/"} className="w-fit boton1 -translate-y-100">
         <div className="relative cursor-pointer hover:brightness-110 flex justify-center gap-2 items-center text-center py-2 text-sm font-bold truncate transition">
