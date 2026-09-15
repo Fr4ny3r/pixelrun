@@ -24,13 +24,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://pixelrun-ten.vercel.app"),
   title: {
-    default: "PixelRun | Gana Dinero Jugando y Viendo Anuncios",
-    template: "%s | PixelRun",
+    default: "PixelRunTen | Gana Dinero Jugando y Viendo Anuncios",
+    template: "%s | PixelRunTen",
   },
   description:
     "Juega minijuegos, mira anuncios y acumula puntos para canjear por dinero real en PixelRun. Sube de nivel, completa misiones y retira tu saldo fácilmente.",
   keywords: [
-    "PixelRun",
+    "PixelRunTen",
     "PixelRun Ten",
     "ganar dinero jugando",
     "juegos para ganar dinero",
@@ -57,10 +57,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_ES",
     url: "https://pixelrun-ten.vercel.app",
-    title: "PixelRun | Gana Dinero Jugando y Viendo Anuncios",
+    title: "PixelRunTen | Gana Dinero Jugando y Viendo Anuncios",
     description:
-      "Acumula puntos, sube de nivel y canjea tu saldo por dinero real en PixelRun.",
-    siteName: "PixelRun",
+      "Acumula puntos, sube de nivel y canjea tu saldo por dinero real en PixelRunTen.",
+    siteName: "PixelRunTen",
     images: [
       {
         url: "/og-image.png",
@@ -72,9 +72,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PixelRun | Gana Dinero Jugando y Viendo Anuncios",
+    title: "PixelRunTen | Gana Dinero Jugando y Viendo Anuncios",
     description:
-      "Acumula puntos, sube de nivel y canjea tu saldo por dinero real en PixelRun.",
+      "Acumula puntos, sube de nivel y canjea tu saldo por dinero real en PixelRunTen.",
     images: ["/og-image.png"],
   },
 };
