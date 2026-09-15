@@ -32,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html 
     lang="en" className={``}>
     <head>
+      <meta name="google-site-verification" content="1_Sf3KSAwHVtz7nXqWKJo8mU7yKPYjPUZ_AUNYwxykI" />
       <meta name="google-adsense-account" content="ca-pub-9158230735641941"></meta>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9158230735641941"
       crossOrigin="anonymous"></script>
