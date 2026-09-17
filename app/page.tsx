@@ -96,13 +96,13 @@ export default async function App() {
                   :
                   (
                     <span className="relative h-full flex flex-col items-center justify-center">
-                    <div className=" px-5 md:px-7 py-5 flex flex-col text-2xl md:text-3xl">
+                    <div className=" px-5 md:px-7 py-5 hidden md:flex  flex-col text-xl md:text-3xl">
                     Bienvenido a Pixelrun
-                    <div className="text-lg md:text-xl mt-3">
+                    <div className="text-sm md:text-base mt-3">
                     Inicia sesión con tu cuenta de Google para comenzar a jugar y ganar recompensas.
                     </div>
                     </div>
-                        <div className="w-50 h-20">
+                        <div className="w-50 h-20 my-10 md:my-0">
                         <PixelButton color="var(--foreground)" onClick={()=>{signIn("google",{callbackUrl:"/"})}}>
                           Iniciar
                           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title>google</title><path fill="currentColor" d="M23 10v5h-1v2h-1v2h-1v1h-1v1h-2v1h-2v1H9v-1H7v-1H5v-1H4v-1H3v-2H2v-2H1V9h1V7h1V5h1V4h1V3h2V2h2V1h6v1h2v1h2v2h-1v1h-1v1h-2V6H9v1H7v2H6v6h1v2h2v1h6v-1h2v-2h1v-1h-6v-4z"/></svg>
