@@ -1,4 +1,6 @@
+'use client'
 import { getServerSession } from "next-auth"
+import { signIn } from "next-auth/react"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { Wallet } from './components/Wallet'
 import { useWallet } from './components/WalletContext'
@@ -53,6 +55,7 @@ export default async function App() {
       <main className="h-[100dvh] w-[100%] text-lg md:text-2xl flex md:grid md:grid-cols-[1fr_250px]">
         <div className="parent  h-fit sm:h-full sm:grid flex flex-col gap-4 px-3 py-5 w-full">
 
+        
           <div className="col-span-3 row-span-3 xl:col-span-2 xl:row-span-3 relative">
              <div className="relative w-full h-full top-0 left-0 z-100">
                 <div className="verticalStick absolute left-0 top-0 w-2 h-full py-3">
@@ -92,7 +95,21 @@ export default async function App() {
                     )
                   :
                   (
-                    <span></span>
+                    <span className="relative h-full flex flex-col items-center justify-center">
+                    <div className=" px-5 md:px-7 py-5 flex flex-col text-2xl md:text-3xl">
+                    Bienvenido a Pixelrun
+                    <div className="text-lg md:text-xl mt-3">
+                    Inicia sesión con tu cuenta de Google para comenzar a jugar y ganar recompensas.
+                    </div>
+                    </div>
+                        <div className="w-50 h-20">
+                        <PixelButton color="var(--foreground)" onClick={()=>{signIn("google",{callbackUrl:"/"})}}>
+                          Iniciar
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title>google</title><path fill="currentColor" d="M23 10v5h-1v2h-1v2h-1v1h-1v1h-2v1h-2v1H9v-1H7v-1H5v-1H4v-1H3v-2H2v-2H1V9h1V7h1V5h1V4h1V3h2V2h2V1h6v1h2v1h2v2h-1v1h-1v1h-2V6H9v1H7v2H6v6h1v2h2v1h6v-1h2v-2h1v-1h-6v-4z"/></svg>
+                        </PixelButton>
+                        </div>
+
+                    </span>
                     )}
                 </div>
 
@@ -268,7 +285,7 @@ export default async function App() {
               </div>
             </div>
 
-            <div className=" col-span-2 row-span-2 col-start-4 row-start-1 relative">
+            <div className="mr-4 col-span-2 row-span-2 col-start-4 row-start-1 relative">
              <div className="relative w-full h-full top-0 left-0 z-100">
                 <div className="verticalStick absolute left-0 top-0 w-2 h-full py-3">
                   <div className="w-full h-full bg-[var(--foreground)]"></div>
