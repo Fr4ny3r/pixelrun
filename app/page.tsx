@@ -1,4 +1,3 @@
-'use client'
 import { getServerSession } from "next-auth"
 import { signIn } from "next-auth/react"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
@@ -8,6 +7,10 @@ import AdBanner from "./components/AdBanner";
 
 export default async function App() {
   const session = await getServerSession(authOptions);
+
+  function handleSignIn() {
+    signIn("google", { callbackUrl: "/" });
+  }
 
   function PixelButton({
     color,
@@ -96,19 +99,29 @@ export default async function App() {
                   :
                   (
                     <span className="relative h-full flex flex-col items-center justify-center">
-                    <div className=" px-5 md:px-7 py-5 hidden md:flex  flex-col text-xl md:text-3xl">
+                    <div className=" px-5 md:px-7 py-5 hidden md:flex  flex-col text-xl md:text-3xl xl:text-4xl">
                     Bienvenido a Pixelrun
-                    <div className="text-sm md:text-base mt-3">
+                    <div className="text-sm md:text-base xl:text-lg mt-3">
                     Inicia sesión con tu cuenta de Google para comenzar a jugar y ganar recompensas.
                     </div>
                     </div>
-                        <div className="w-50 h-20 my-10 md:my-0">
-                        <PixelButton color="var(--foreground)" onClick={()=>{signIn("google",{callbackUrl:"/"})}}>
-                          Iniciar
-                          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title>google</title><path fill="currentColor" d="M23 10v5h-1v2h-1v2h-1v1h-1v1h-2v1h-2v1H9v-1H7v-1H5v-1H4v-1H3v-2H2v-2H1V9h1V7h1V5h1V4h1V3h2V2h2V1h6v1h2v1h2v2h-1v1h-1v1h-2V6H9v1H7v2H6v6h1v2h2v1h6v-1h2v-2h1v-1h-6v-4z"/></svg>
+                    <span className="text-lg font-bold md:-my-3 px-8 w-full " >iniciar con:</span>
+                    <div className="flex py-20 sm:py-0 flex-col md:flex-row gap-2 justify-start px-8 md:items-center w-full">
+                        
+                        <a className=" md:my-4 md:my-0 " href="/login">
+                        <PixelButton color="var(--foreground)">
+                          {/* Iniciar */}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1.8em" height="1.8em" viewBox="0 0 24 24"><title>google</title><path fill="currentColor" d="M23 10v5h-1v2h-1v2h-1v1h-1v1h-2v1h-2v1H9v-1H7v-1H5v-1H4v-1H3v-2H2v-2H1V9h1V7h1V5h1V4h1V3h2V2h2V1h6v1h2v1h2v2h-1v1h-1v1h-2V6H9v1H7v2H6v6h1v2h2v1h6v-1h2v-2h1v-1h-6v-4z"/></svg>
                         </PixelButton>
-                        </div>
+                        </a>
+                        <a className=" md:my-4 md:my-0" href="/login">
+                        <PixelButton color="var(--foreground)">
+                          {/* Iniciar */}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1.8em" height="1.8em" viewBox="0 0 12 12"><title >github</title><path fill="currentColor" d="M2 12h2v-1H3v-1H2V9H1V8h1v1h1v1h1V9h1V8H3V7H2V4h1V2h1v1h3V2h1v2h1v3H8v1H6v1h1v3h2v-1h1v-1h1V3h-1V2H9V1H2v1H1v1H0v7h1v1h1Zm0 0"/></svg>
 
+                        </PixelButton>
+                        </a>
+                    </div>
                     </span>
                     )}
                 </div>
