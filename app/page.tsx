@@ -313,15 +313,21 @@ export default async function App() {
                   <div className="w-full h-full bg-[var(--foreground)] text-[var(--background)]">
                     
                   <div className="w-full h-full bg-[var(--foreground)] text-4xl flex gap-2 justify-center items-center text-[var(--background)]">
-          
+                    <span className="xl:flex hidden">¡REGLAS!!</span>
                     <svg xmlns="http://www.w3.org/2000/svg" className="flex  xl:hidden " width="2em" height="2em" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
                     {/* <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><title >avatar-circle-sharp</title><path fill="currentColor" d="M6 2h12v2H6zm0 18h12v2H6zM2 6h2v12H2zm18 0h2v12h-2zM6 18h2v2H6zm10 0h2v2h-2zm2-14h2v2h-2zM4 4h2v2H4zm0 14h2v2H4zm14 0h2v2h-2zM6 16h12v2H6zm2-4h8v2H8zm0-4h2v4H8zm0-2h8v2H8zm6 2h2v4h-2z"/></svg> */}
-                     
                   </div>
                   </div>
                 </div>  
-                <div className="relative px-2 flex items-center">
-
+                <div className="relative px-2 flex w-full h-2/3 items-center">
+                  <div className="w-full h-full xl:flex hidden justify-around items-center">
+                    <ul className="text-3xl list-disc ">
+                      <li>JUEGA</li>
+                      <li>GANA</li>
+                      <li>RETIRA</li>
+                    </ul>
+                    <div><svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 24 24"><title>circle-info</title><path fill="currentColor" d="M18 22H6v-2h12zM6 20H4v-2h2zm14 0h-2v-2h2zM4 18H2V6h2zm18 0h-2V6h2zm-9-1h-2v-6h2zm0-8h-2V7h2zM6 6H4V4h2zm14 0h-2V4h2zm-2-2H6V2h12z"/></svg></div>
+                  </div>
                   <div className="xl:hidden flex flex-col justify-start items-start gap-5 w-full h-full p-2 py-5 pb-6">
                     <span className="w-full h-fit hidden sm:flex justify-center items-center flex-col gap-2">
                       <PixelButton color="var(--foreground)">

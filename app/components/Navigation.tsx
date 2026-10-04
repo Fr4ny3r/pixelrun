@@ -15,10 +15,10 @@ export default async function Navigation() {
   ];
 
   return (
-    <nav className="relative sm:flex md:block md:absolute right-0 m-5 mr-10 rounded-b-xl ">
+    <nav className="relative sm:flex md:block md:absolute justify-between  right-0 m-5 rounded-b-xl ">
       {/* Pasamos la sesión al componente de cliente */}
       <AuthButtons session={session} />
-      <div className="w-full h-full hidden md:hidden sm:flex justify-center items-center">
+      <div className="w-8/12 md:w-full h-full hidden md:hidden sm:flex justify-center items-center">
 
                       <div className="flex flex-col text-3xl font-black gap-2 items-center w-full h-30">
                         <span>Level {` ${nivel.filter((n: any) => n.comleted).length} `}</span>

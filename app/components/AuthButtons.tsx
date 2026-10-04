@@ -416,9 +416,9 @@ function PixelButton({
       </>
         ):
       (
-      <section className="relative top-0 left-0 z-10000 max-w-60 h-full flex flex-col justify-center items-center bg-[var(--background)]">
+      <section className="relative top-0 left-0 z-10000 h-full flex flex-col justify-center items-center bg-[var(--background)]">
       
-      <div className="relative">
+      <div className="relative left-1/2 -translate-x-1/2 w-full">
                   <div className="col-span-3 row-span-3 xl:col-span-2 xl:row-span-3 relative">
              <div className="relative w-full h-full flex flex-col justify-center items-center  top-0 left-0 z-100">
                 <div className="verticalStick absolute left-0 top-0 w-2 h-full py-3">
