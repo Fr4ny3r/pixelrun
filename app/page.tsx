@@ -192,7 +192,7 @@ export default async function App() {
 
             <div className=" sm:col-span-3 sm:row-span-2 sm:col-start-1 sm:row-start-4 relative">
              
-             <div className="relative w-full h-full top-0 left-0 z-100">
+             <div className="relative w-full h-full flex flex-col top-0 left-0 z-100">
                 <div className="verticalStick absolute left-0 top-0 w-2 h-full py-3">
                   <div className="w-full h-full bg-[var(--foreground)]"></div>
                 </div>
@@ -202,9 +202,10 @@ export default async function App() {
                 <div className="horizontalStick absolute left-0 bottom-0 w-full h-3 px-2">
                   <div className="w-full h-full bg-[var(--foreground)]"></div>
                 </div>
-                <div className="horizontalStick relative left-0 top-0 w-full h-15 mt-1 px-2">
+
+                <div className="horizontalStick relative left-0 top-0 w-full h-20 mt-1 px-2">
                   <div className="w-full h-full bg-[var(--foreground)] text-[var(--background)] gap-2 flex flex-row-reverse text-2xl justify-between items-center px-2 pr-8">
-                    Social Red
+                    REDES SOCIALES
                     <div className="flex flex-row-reverse gap-2">
                     <span className="bg-[var(--background)] block w-8 h-8"></span>
                     <span className="bg-[var(--background)] block w-8 h-8"></span>
@@ -215,12 +216,12 @@ export default async function App() {
                 </div>  
 
                 {/*  apartado de pc */}
-                  <div className=" px-5 my-8 hidden gap-3 sm:flex sm:itmes-start">
+                  <div className="h-full w-full px-5 hidden gap-3 sm:flex sm:itmes-start">
                   <a href="https://github.com/Fr4ny3r/pixelrun" target="_blank"  className="flex items-center justify-center w-1/2 h-full gap-2">
                       <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 12 12"><title >github</title><path fill="currentColor" d="M2 12h2v-1H3v-1H2V9H1V8h1v1h1v1h1V9h1V8H3V7H2V4h1V2h1v1h3V2h1v2h1v3H8v1H6v1h1v3h2v-1h1v-1h1V3h-1V2H9V1H2v1H1v1H0v7h1v1h1Zm0 0"/></svg>
                   </a>
 
-                  <div className="flex flex-col gap-2 py-5">
+                  <div className="flex flex-col justify-center gap-2 py-5">
                     <a href="https://www.instagram.com/pixelrun10/" target="_blank" className="flex items-center gap-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><title >instagram</title><path fill="currentColor" d="M18 22H6v-2h12zM6 20H4v-2h2zm14 0h-2v-2h2zM4 18H2V6h2zm18 0h-2V6h2zm-8-2h-4v-2h4zm-4-2H8v-4h2zm6 0h-2v-4h2zm-2-4h-4V8h4zm4-2h-2V6h2zM6 6H4V4h2zm14 0h-2V4h2zm-2-2H6V2h12z"/></svg>
                       <span className="text-2xl">Pixelrun10</span>
@@ -284,14 +285,19 @@ export default async function App() {
                 <div className="px-2 sm:h-9/12 sm:mt-1 flex items-center justify-center">
                   <div className="flex flex-col justify-start items-start gap-5 w-full h-full p-2">
                     <span className="w-full h-fit flex justify-center items-center flex-col gap-2">
-                      <PixelButton color="var(--foreground)">
-                        Gana Jugando
-                      </PixelButton>
-                      <PixelButton color="var(--foreground)">
-                        Gana viendo
-                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><title>play</title><path fill="currentColor" d="M15 11h-2V9h2zm0 4h-2v-2h2zm-2 2h-2v-2h2zm0-8h-2V7h2zm-2-2H9V5h2zM9 21H7V3h2zm6-8h2v-2h-2zm-6 4h2v2H9z"/></svg> */}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><title >video</title><path fill="currentColor" d="M20 17V7h2v10zm-2-2V9h2v6zM2 7h2v10H2zm14 0h2v10h-2zM4 5h12v2H4zm0 12h12v2H4z"/></svg>
-                      </PixelButton>
+                      <a className="w-full" href="/games">
+                        <PixelButton color="var(--foreground)">
+                          Gana Jugando
+                        </PixelButton>
+                      </a>
+                      <a className="w-full">
+                        <PixelButton color="var(--foreground)">
+                          Gana viendo
+                          {/* <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><title>play</title><path fill="currentColor" d="M15 11h-2V9h2zm0 4h-2v-2h2zm-2 2h-2v-2h2zm0-8h-2V7h2zm-2-2H9V5h2zM9 21H7V3h2zm6-8h2v-2h-2zm-6 4h2v2H9z"/></svg> */}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><title >video</title><path fill="currentColor" d="M20 17V7h2v10zm-2-2V9h2v6zM2 7h2v10H2zm14 0h2v10h-2zM4 5h12v2H4zm0 12h12v2H4z"/></svg>
+                        </PixelButton>
+                      </a>
+
                     </span>
                   </div>
                 </div>
@@ -313,7 +319,7 @@ export default async function App() {
                   <div className="w-full h-full bg-[var(--foreground)] text-[var(--background)]">
                     
                   <div className="w-full h-full bg-[var(--foreground)] text-4xl flex gap-2 justify-center items-center text-[var(--background)]">
-                    <span className="xl:flex hidden">¡REGLAS!!</span>
+                    <span className="xl:flex text-4xl hidden">¡REGLAS!!</span>
                     <svg xmlns="http://www.w3.org/2000/svg" className="flex  xl:hidden " width="2em" height="2em" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M6 2h12v2H6zM4 6V4h2v2zm0 12V6H2v12zm2 2v-2H4v2zm12 0v2H6v-2zm2-2v2h-2v-2zm0-12h2v12h-2zm0 0V4h-2v2zm-9-1h2v2h3v2h-6v2h6v6h-3v2h-2v-2H8v-2h6v-2H8V7h3z"/></svg>
                     {/* <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><title >avatar-circle-sharp</title><path fill="currentColor" d="M6 2h12v2H6zm0 18h12v2H6zM2 6h2v12H2zm18 0h2v12h-2zM6 18h2v2H6zm10 0h2v2h-2zm2-14h2v2h-2zM4 4h2v2H4zm0 14h2v2H4zm14 0h2v2h-2zM6 16h12v2H6zm2-4h8v2H8zm0-4h2v4H8zm0-2h8v2H8zm6 2h2v4h-2z"/></svg> */}
                   </div>

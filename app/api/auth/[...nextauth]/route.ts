@@ -40,6 +40,13 @@ export const authOptions: NextAuthOptions = {
           userId: user.id,
           balance: 10,
         },
+      })
+      await prisma?.transaction?.create({
+        data: {
+          userId: user.id,
+          type: "Registro",
+          amount: 10,
+        },
       });
     },
   },
