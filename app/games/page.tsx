@@ -15,7 +15,7 @@ export default async function Game() {
               img={"./file.svg"}
             />
             <TargetGame 
-              titulo={"asdasdasdasd"}
+              titulo={"BLACKJACK!!"}
               desc={`!Que esperas para seguir gananado Puntos`}
               img={"./file.svg"}
             />

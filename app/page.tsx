@@ -304,7 +304,7 @@ export default async function App() {
               </div>
             </div>
 
-            <div className="mr-4 col-span-2 row-span-2 col-start-4 row-start-1 relative">
+            <div className="mr-4 w-full col-span-2 row-span-2 col-start-4 row-start-1 relative">
              <div className="relative w-full h-full top-0 left-0 z-100">
                 <div className="verticalStick absolute left-0 top-0 w-2 h-full py-3">
                   <div className="w-full h-full bg-[var(--foreground)]"></div>
