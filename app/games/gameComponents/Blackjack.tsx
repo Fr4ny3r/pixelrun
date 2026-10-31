@@ -44,7 +44,7 @@ export function Blackjack ({url} : {url:string}) {
       const [playerHand, setPlayerHand] = useState<Card[]>([]);
       const [dealerHand, setDealerHand] = useState<Card[]>([]);
       const [gameState, setGameState] = useState<"idle" | "playing" | "ended">("idle");
-      const [message, setMessage] = useState<string>("¡Haz una apuesta para empezar!");
+      const [message, setMessage] = useState<string>("¡Apuesta para empezar!");
 
       const [pokerCoins, setPokerCoins] = useState<number>(10)
       const [wallet, setWallet] = useState<any>()
@@ -59,7 +59,7 @@ export function Blackjack ({url} : {url:string}) {
     setPlayerHand(pHand);
     setDealerHand(dHand);
     setGameState("playing");
-    setMessage("Tu turno: ¿Pedir (Hit) o Plantarse (Stand)?");
+    setMessage("¡Es tu turno!");
 
     if (calculateScore(pHand) === 21) {
       setMessage("¡Blackjack! Has ganado 🃏");
@@ -79,7 +79,7 @@ export function Blackjack ({url} : {url:string}) {
 
     const score = calculateScore(newHand);
     if (score > 21) {
-      setMessage("Te pasaste de 21. ¡Perdiste! 💀");
+      setMessage("Te pasaste de 21. -0");
       setGameState("ended");
     }
   };
@@ -103,11 +103,11 @@ export function Blackjack ({url} : {url:string}) {
     const dealerScore = calculateScore(currentDealerHand);
 
     if (dealerScore > 21 || playerScore > dealerScore) {
-      setMessage(`¡Ganaste! (Tú: ${playerScore} vs Dealer: ${dealerScore}) 🎉`);
+      setMessage(`¡Ganaste 0!!!`);
     } else if (playerScore < dealerScore) {
-      setMessage(`El dealer gana. (Tú: ${playerScore} vs Dealer: ${dealerScore}) 😢`);
+      setMessage(`El dealer gana. (-0)`);
     } else {
-      setMessage(`Empate (Push). (Tú: ${playerScore} vs Dealer: ${dealerScore}) 🤝`);
+      setMessage(`Empate. ()`);
     }
   };
 
@@ -138,7 +138,7 @@ export function Blackjack ({url} : {url:string}) {
                     <h1 className="text-2xl md:text-4xl hidden sm:flex">BLACKJACK</h1>
                     <div className="text-[var(--foreground)] flex flex-col xl:flex-row p-4 bg-[var(--background)] w-full h-fit">
 
-                        <div className="flex flex-col justify-center items-center gap-8 xl:w-1/2 w-full ">
+                        <div className="flex hidden flex-col justify-center items-center gap-8 xl:w-1/2 w-full ">
                             <h2 className="text-4xl">APOSTAR</h2>
                             <div className="flex justify-center items-center gap-4">
                                 <span className="bg-[var(--foreground)] text-[var(--background)] text-5xl p-1 px-8">{pokerCoins}</span>
@@ -155,51 +155,65 @@ export function Blackjack ({url} : {url:string}) {
                                 <button onClick={()=>{setPokerCoins(wallet)}} className="border-2 border-[var(--foregound)] p-2 cursor-pointer hover:bg-[var(--foreground)] hover:text-[var(--background)] hover:border-[var(--foreground)]">ALL IN</button>
                             </div>
                         </div>
-                        <div className="flex items-center py-10 sm:py-0 justify-center w-full">
-                              <div className=" p-6 bg-slate-900 text-white rounded-xl w-full text-center">
+      <div className="flex items-center py-10 sm:py-0 justify-center w-full">
+        <div className=" p-6  w-full text-center">
       
-      <div className="mb- p-4  bg-slate-800 rounded-lg">
-        <p className="text-lg font-medium text-amber-300">{message}</p>
+      <div className="relative sm:p-4 mb-8 flex border-white rounded-lg">
+        <p className="absolute  md:flex top-0  sm:right-0 -translate-y-5 text-lg font-medium">{message}</p>
+        <span>Total Apostado : 0</span>
       </div>
-
-      {/* Dealer Hand */}
-      <div className="flex justify-around items-center gap-3 mb-6">
-        <h3 className="text-sm text-slate-400 mb-2">Repartidor: ({calculateScore(dealerHand)})</h3>
-        <div className="flex justify-center gap-2">
-          {dealerHand.map((card, i) => (
-            <div key={i} className="w-12 h-16 bg-white text-slate-900 rounded flex flex-col justify-center items-center font-bold shadow">
-              <span>{card.value}</span>
-              <span className="text-lg">{card.suit}</span>
-            </div>
-          ))}
+      
+      <div className="md:flex flex-col lg:flex-row gap-4 w-full mb-12 text-xl sm:text-2xl">
+          {/* Dealer Hand */}
+        <div className="flex w-full justify-between items-center gap-3 mb-8 sm:mb-0">
+          <h3 className=" flex gap-3 items-center font-semibold mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2.3em" height="2.3em" viewBox="0 0 24 24"><title>coins</title><path fill="currentColor" d="M23 4v11h-1v1h-3v-2h2v-2h-2v-2h2V8h-3V6h2V4h-2V3h-7v1H9v1H7V3h2V2h2V1h7v1h2v1h2v1z"/><path fill="currentColor" d="M15 8V7h-3V6H6v1H3v1H1v13h2v1h3v1h6v-1h3v-1h2V8ZM3 9h3V8h6v1h3v2h-3v1H6v-1H3Zm12 11h-3v1H6v-1H3v-3h3v1h6v-1h3Zm-3-5v1H6v-1H3v-2h3v1h6v-1h3v2Z"/></svg>
+            ({calculateScore(dealerHand)})
+          </h3>
+          <div className="flex justify-center gap-2">
+            {dealerHand.map((card, i) => (
+              <div key={i} className="w-12 h-16 bg-white text-slate-900 rounded flex flex-col justify-center items-center font-bold shadow">
+                <span>{card.value}</span>
+                <span className="text-lg">{card.suit}</span>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Player Hand */}
-      <div className="flex justify-around items-center gap-3 mb-6">
-        <h3 className="text-sm text-slate-400 mb-2">Tu Mano ({calculateScore(playerHand)})</h3>
-        <div className="flex justify-center gap-2">
-          {playerHand.map((card, i) => (
-            <div key={i} className="w-12 h-16 bg-white text-slate-900 rounded flex flex-col justify-center items-center font-bold shadow">
-              <span>{card.value}</span>
-              <span className="text-lg">{card.suit}</span>
-            </div>
-          ))}
+        {/* Player Hand */}
+        <div className=" w-full flex justify-between items-center gap-3">
+          <h3 className=" flex gap-3 items-center font-semibold mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2.3em" height="2.3em" viewBox="0 0 24 24"><title>user</title><path fill="currentColor" d="M17 5V3h-1V2h-2V1h-4v1H8v1H7v2H6v4h1v2h1v1h2v1h4v-1h2v-1h1V9h1V5zm-2 4v1h-1v1h-4v-1H9V9H8V5h1V4h1V3h4v1h1v1h1v4zm6 10v-1h-1v-1h-1v-1h-2v-1H7v1H5v1H4v1H3v1H2v3h1v1h18v-1h1v-3zM5 19v-1h2v-1h10v1h2v1h1v2H4v-2z"/></svg>
+            ({calculateScore(playerHand)})
+          </h3>
+          <div className="flex justify-center gap-2">
+            {playerHand.map((card, i) => (
+              <div key={i} className="w-12 h-16 bg-white text-slate-900 rounded flex flex-col justify-center items-center font-bold shadow">
+                <span>{card.value}</span>
+                <span className="text-lg">{card.suit}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Botones de acción */}
       <div className="flex justify-center gap-4">
         {gameState !== "playing" ? (
-          <button onClick={startGame} className="px-6 py-2 bg-emerald-600 hover:bg-emerald-500 rounded font-bold transition">
+          <>
+          <button onClick={startGame} className="cursor-pointer px-6 py-2 bg-[var(--primary-green)] hover:bg-emerald-500 rounded font-bold transition">
             {gameState === "idle" ? "Iniciar Juego" : "Jugar de Nuevo"}
           </button>
+          <button className="cursor-pointer px-6 py-2 bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/70 rounded font-bold transition">
+            Retirarse
+          </button>
+          </>
         ) : (
           <>
-            <button onClick={hit} className="px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded font-bold transition">
+            <button onClick={hit} className="cursor-pointer px-6 py-2 bg-[var(--primary-green)] hover:bg-blue-500 rounded font-bold transition">
               Pedir (Hit)
             </button>
-            <button onClick={stand} className="px-6 py-2 bg-rose-600 hover:bg-rose-500 rounded font-bold transition">
+            <button onClick={stand} className="cursor-pointer px-6 py-2 bg-[var(--primary-red)] hover:bg-rose-500 rounded font-bold transition">
               Plantarse (Stand)
             </button>
           </>
