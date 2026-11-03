@@ -43,7 +43,7 @@ export function Blackjack ({url} : {url:string}) {
       const [deck, setDeck] = useState<Card[]>([]);
       const [playerHand, setPlayerHand] = useState<Card[]>([]);
       const [dealerHand, setDealerHand] = useState<Card[]>([]);
-      const [gameState, setGameState] = useState<"idle" | "playing" | "ended">("idle");
+      const [gameState, setGameState] = useState<"idle" | "playing" | "ended" | "draw">("idle");
       const [message, setMessage] = useState<string>("¡Apuesta para empezar!");
 
       const [pokerCoins, setPokerCoins] = useState<number>(10)
@@ -107,6 +107,7 @@ export function Blackjack ({url} : {url:string}) {
     } else if (playerScore < dealerScore) {
       setMessage(`El dealer gana. (-0)`);
     } else {
+      setGameState("draw");
       setMessage(`Empate. ()`);
     }
   };
@@ -158,19 +159,39 @@ export function Blackjack ({url} : {url:string}) {
       <div className="flex items-center py-10 sm:py-0 justify-center w-full">
         <div className=" p-6  w-full text-center">
       
-      <div className="relative sm:p-4 mb-8 flex border-white rounded-lg">
+      {/* <div className="relative sm:p-4 mb-8 flex border-white rounded-lg">
         <p className="absolute  md:flex top-0  sm:right-0 -translate-y-5 text-lg font-medium">{message}</p>
         <span>Total Apostado : 0</span>
-      </div>
+      </div> */}
       
-      <div className="md:flex flex-col lg:flex-row gap-4 w-full mb-12 text-xl sm:text-2xl">
+      <div className="relative md:flex flex-col lg:flex-row lg:gap-4 w-full mb-12 text-xl sm:text-2xl">
+          {gameState === "draw" && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
+              <p className="text-white text-2xl font-bold">It's a Draw!</p>
+              <button onClick={startGame} className="ml-4 px-4 py-2 bg-white text-black font-bold rounded hover:bg-gray-200">
+                Jugar de nuevo
+              </button>
+            </div>
+          )}
+          {gameState === "ended" && (
+            <div className="absolute scale-125 inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
+              <p className="text-white text-2xl font-bold">{message}</p>
+              <button onClick={startGame} className="ml-4 px-4 py-2 bg-white text-black font-bold rounded hover:bg-gray-200">
+                Jugar de nuevo
+              </button>
+            </div>
+          )}
           {/* Dealer Hand */}
-        <div className="flex w-full justify-between items-center gap-3 mb-8 sm:mb-0">
-          <h3 className=" flex gap-3 items-center font-semibold mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="2.3em" height="2.3em" viewBox="0 0 24 24"><title>coins</title><path fill="currentColor" d="M23 4v11h-1v1h-3v-2h2v-2h-2v-2h2V8h-3V6h2V4h-2V3h-7v1H9v1H7V3h2V2h2V1h7v1h2v1h2v1z"/><path fill="currentColor" d="M15 8V7h-3V6H6v1H3v1H1v13h2v1h3v1h6v-1h3v-1h2V8ZM3 9h3V8h6v1h3v2h-3v1H6v-1H3Zm12 11h-3v1H6v-1H3v-3h3v1h6v-1h3Zm-3-5v1H6v-1H3v-2h3v1h6v-1h3v2Z"/></svg>
-            ({calculateScore(dealerHand)})
+        <div className="flex w-full flex-row-reverse justify-between items-center gap-3">
+          <h3 className="flex gap-3 items-center font-semibold mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg"  width="2.3em" height="2.3em" viewBox="0 0 24 24"><title>coins</title><path fill="currentColor" d="M23 4v11h-1v1h-3v-2h2v-2h-2v-2h2V8h-3V6h2V4h-2V3h-7v1H9v1H7V3h2V2h2V1h7v1h2v1h2v1z"/><path fill="currentColor" d="M15 8V7h-3V6H6v1H3v1H1v13h2v1h3v1h6v-1h3v-1h2V8ZM3 9h3V8h6v1h3v2h-3v1H6v-1H3Zm12 11h-3v1H6v-1H3v-3h3v1h6v-1h3Zm-3-5v1H6v-1H3v-2h3v1h6v-1h3v2Z"/></svg>
+            {/* ({calculateScore(dealerHand)}) */}
           </h3>
           <div className="flex justify-center gap-2">
+            <span className="flex pl-1 justify-between flex-row-reverse absolute -translate-y-12 left-0 text-3xl w-full font-bold">
+              <p>Dealer</p>
+              {calculateScore(dealerHand)}
+            </span>
             {dealerHand.map((card, i) => (
               <div key={i} className="w-12 h-16 bg-white text-slate-900 rounded flex flex-col justify-center items-center font-bold shadow">
                 <span>{card.value}</span>
@@ -180,13 +201,27 @@ export function Blackjack ({url} : {url:string}) {
           </div>
         </div>
 
+
+                  <div className="relative sm:p-4 my-10 flex justify-center border-x-4 border-">
+                  {/* <p className="absolute w-full text-left pl-2 underline md:flex top-0  sm:right-0 -translate-y-5 text-lg font-medium">{message}</p> */}
+                  <span className="text-5xl flex justify-center items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="2em" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M17 9V8h-2V7H9v1H7v1H6v2h1v1h2v1h6v-1h2v-1h1V9Zm-2 2H9V9h6Z"/><path fill="currentColor" d="M21 8V7h-1V6h-2V5h-2V4H8v1H6v1H4v1H3v1H1v8h2v1h1v1h2v1h3v1h6v-1h3v-1h2v-1h1v-1h2V8ZM6 16H4v-1H3v-2h1v1h2Zm5 2H8v-2h3Zm5 0h-3v-2h3Zm5-3h-1v1h-2v-2h2v-1h1Zm0-4h-1v1h-2v1h-2v1H8v-1H6v-1H4v-1H3V9h1V8h2V7h2V6h8v1h2v1h2v1h1Z"/></svg>
+                    0
+                  </span>
+                </div>
+
+
         {/* Player Hand */}
-        <div className=" w-full flex justify-between items-center gap-3">
-          <h3 className=" flex gap-3 items-center font-semibold mb-2">
+        <div className=" w-full flex justify-between items-end gap-3 ">
+          <h3 className="flex gap-3 font-semibold">
             <svg xmlns="http://www.w3.org/2000/svg" width="2.3em" height="2.3em" viewBox="0 0 24 24"><title>user</title><path fill="currentColor" d="M17 5V3h-1V2h-2V1h-4v1H8v1H7v2H6v4h1v2h1v1h2v1h4v-1h2v-1h1V9h1V5zm-2 4v1h-1v1h-4v-1H9V9H8V5h1V4h1V3h4v1h1v1h1v4zm6 10v-1h-1v-1h-1v-1h-2v-1H7v1H5v1H4v1H3v1H2v3h1v1h18v-1h1v-3zM5 19v-1h2v-1h10v1h2v1h1v2H4v-2z"/></svg>
-            ({calculateScore(playerHand)})
+            {/* ({calculateScore(playerHand)}) */}
           </h3>
-          <div className="flex justify-center gap-2">
+          <div className=" flex justify-center gap-2">
+            <span className="flex pl-1 justify-between absolute translate-y-18 left-0 text-3xl w-full font-bold">
+              <p>Player</p>
+              {calculateScore(playerHand)}
+            </span>
             {playerHand.map((card, i) => (
               <div key={i} className="w-12 h-16 bg-white text-slate-900 rounded flex flex-col justify-center items-center font-bold shadow">
                 <span>{card.value}</span>
@@ -198,8 +233,37 @@ export function Blackjack ({url} : {url:string}) {
       </div>
 
       {/* Botones de acción */}
-      <div className="flex justify-center gap-4">
-        {gameState !== "playing" ? (
+      <div className="flex flex-col justify-center gap-4">
+              {gameState === "idle" ? (
+            <button onClick={startGame}  className="font-bold border-2 border-[var(--foreground)] p-2 cursor-pointer hover:bg-[var(--foreground)] hover:text-[var(--background)] hover:border-[var(--foreground)]">
+              Empezar Juego
+            </button>
+            ) : (<button className="font-bold border-2 border-[var(--foreground)] p-2 cursor-pointer hover:bg-[var(--foreground)] hover:text-[var(--background)] hover:border-[var(--foreground)]">Retirarse</button>)}
+            <div className="flex justify-center gap-4 w-full">
+              {gameState !== "playing" ? (
+                <>
+                  <button onClick={hit} className=" cursor-pointer px-6 py-2 bg-[var(--primary-green)] hover:bg-blue-500 rounded font-bold transition">
+                    Pedir (Hit)
+                  </button>
+                  <button onClick={stand} className="cursor-pointer px-6 py-2 bg-[var(--primary-red)] hover:bg-rose-500 rounded font-bold transition">
+                    Plantarse (Stand)
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button onClick={hit} className="cursor-pointer px-6 py-2 bg-[var(--primary-green)] hover:bg-blue-500 rounded font-bold transition">
+                    Pedir (Hit)
+                  </button>
+                  <button onClick={stand} className="cursor-pointer px-6 py-2 bg-[var(--primary-red)] hover:bg-rose-500 rounded font-bold transition">
+                    Plantarse (Stand)
+                  </button>
+                </>
+              )}
+            </div>
+            <button className="font-bold border-2 border-[var(--foreground)] p-2 cursor-pointer hover:bg-[var(--foreground)] hover:text-[var(--background)] hover:border-[var(--foreground)]">
+              Doblar 
+            </button>
+        {/* {gameState !== "playing" ? (
           <>
           <button onClick={startGame} className="cursor-pointer px-6 py-2 bg-[var(--primary-green)] hover:bg-emerald-500 rounded font-bold transition">
             {gameState === "idle" ? "Iniciar Juego" : "Jugar de Nuevo"}
@@ -217,7 +281,7 @@ export function Blackjack ({url} : {url:string}) {
               Plantarse (Stand)
             </button>
           </>
-        )}
+        )} */}
       </div>
     </div>
                         </div>
