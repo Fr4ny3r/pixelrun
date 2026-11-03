@@ -134,7 +134,7 @@ export function Blackjack ({url} : {url:string}) {
     return (
         <>
         {gameState && "idle" ? (
-            <main className=" w-full h-full flex flex-col justify-around items-center overflow-hidden ">
+            <main className=" w-full h-full flex flex-col justify-around items-center ">
                 <div className="text-[var(--background)] flex flex-col sm:p-4 gap-6 bg-[var(--foreground)] sm:w-5/6 md:h-fit w-full h-fit">
                     <h1 className="text-2xl md:text-4xl hidden sm:flex">BLACKJACK</h1>
                     <div className="text-[var(--foreground)] flex flex-col xl:flex-row p-4 bg-[var(--background)] w-full h-fit">
@@ -164,7 +164,7 @@ export function Blackjack ({url} : {url:string}) {
         <span>Total Apostado : 0</span>
       </div> */}
       
-      <div className="relative md:flex flex-col lg:flex-row lg:gap-4 w-full mb-12 text-xl sm:text-2xl">
+      <div className="relative md:flex flex-col lg:flex-row lg:gap-8  w-full mb-12 text-xl sm:text-2xl">
           {gameState === "draw" && (
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
               <p className="text-white text-2xl font-bold">It's a Draw!</p>
@@ -182,13 +182,13 @@ export function Blackjack ({url} : {url:string}) {
             </div>
           )}
           {/* Dealer Hand */}
-        <div className="flex w-full flex-row-reverse justify-between items-center gap-3">
+        <div className="flex w-full xl:w-1/2 scale-120 sm:scale-100 flex-row-reverse justify-center xl:justify-between items-center gap-3">
           <h3 className="flex gap-3 items-center font-semibold mb-2">
             <svg xmlns="http://www.w3.org/2000/svg"  width="2.3em" height="2.3em" viewBox="0 0 24 24"><title>coins</title><path fill="currentColor" d="M23 4v11h-1v1h-3v-2h2v-2h-2v-2h2V8h-3V6h2V4h-2V3h-7v1H9v1H7V3h2V2h2V1h7v1h2v1h2v1z"/><path fill="currentColor" d="M15 8V7h-3V6H6v1H3v1H1v13h2v1h3v1h6v-1h3v-1h2V8ZM3 9h3V8h6v1h3v2h-3v1H6v-1H3Zm12 11h-3v1H6v-1H3v-3h3v1h6v-1h3Zm-3-5v1H6v-1H3v-2h3v1h6v-1h3v2Z"/></svg>
             {/* ({calculateScore(dealerHand)}) */}
           </h3>
           <div className="flex justify-center gap-2">
-            <span className="flex pl-1 justify-between flex-row-reverse absolute -translate-y-11/6 left-0 text-3xl w-full font-bold">
+            <span className="flex pl-1 justify-between flex-row-reverse absolute -translate-y-8/6 left-0 text-3xl w-full font-bold">
               <p>Dealer</p>
               {calculateScore(dealerHand)}
             </span>
@@ -202,7 +202,7 @@ export function Blackjack ({url} : {url:string}) {
         </div>
 
 
-                  <div className="relative sm:p-4 my-10 flex justify-center border-x-4 border-">
+                  <div className="relative xl:w-1/2 sm:p-4 my-10 flex justify-center md:border-x-0 md:border-y-0 border-y-4">
                   {/* <p className="absolute w-full text-left pl-2 underline md:flex top-0  sm:right-0 -translate-y-5 text-lg font-medium">{message}</p> */}
                   <span className="text-5xl flex justify-center items-center gap-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="2em" viewBox="0 0 24 24"><title>coin</title><path fill="currentColor" d="M17 9V8h-2V7H9v1H7v1H6v2h1v1h2v1h6v-1h2v-1h1V9Zm-2 2H9V9h6Z"/><path fill="currentColor" d="M21 8V7h-1V6h-2V5h-2V4H8v1H6v1H4v1H3v1H1v8h2v1h1v1h2v1h3v1h6v-1h3v-1h2v-1h1v-1h2V8ZM6 16H4v-1H3v-2h1v1h2Zm5 2H8v-2h3Zm5 0h-3v-2h3Zm5-3h-1v1h-2v-2h2v-1h1Zm0-4h-1v1h-2v1h-2v1H8v-1H6v-1H4v-1H3V9h1V8h2V7h2V6h8v1h2v1h2v1h1Z"/></svg>
@@ -212,13 +212,13 @@ export function Blackjack ({url} : {url:string}) {
 
 
         {/* Player Hand */}
-        <div className=" w-full flex justify-between items-end gap-3 ">
+        <div className="w-full xl:w-1/2 scale-120 sm:scale-100 w-full flex justify-center xl:justify-between items-end gap-3 ">
           <h3 className="flex gap-3 font-semibold">
             <svg xmlns="http://www.w3.org/2000/svg" width="2.3em" height="2.3em" viewBox="0 0 24 24"><title>user</title><path fill="currentColor" d="M17 5V3h-1V2h-2V1h-4v1H8v1H7v2H6v4h1v2h1v1h2v1h4v-1h2v-1h1V9h1V5zm-2 4v1h-1v1h-4v-1H9V9H8V5h1V4h1V3h4v1h1v1h1v4zm6 10v-1h-1v-1h-1v-1h-2v-1H7v1H5v1H4v1H3v1H2v3h1v1h18v-1h1v-3zM5 19v-1h2v-1h10v1h2v1h1v2H4v-2z"/></svg>
             {/* ({calculateScore(playerHand)}) */}
           </h3>
           <div className=" flex justify-center gap-2">
-            <span className="flex pl-1 justify-between absolute translate-y-0 left-0 text-3xl w-full font-bold">
+            <span className="flex pl-1 justify-between absolute translate-y-11/6 left-0 text-3xl w-full font-bold">
               <p>Player</p>
               {calculateScore(playerHand)}
             </span>
@@ -233,7 +233,7 @@ export function Blackjack ({url} : {url:string}) {
       </div>
 
       {/* Botones de acción */}
-      <div className="flex flex-col justify-center gap-4">
+      <div className="relative flex flex-col w-full -translate-x-1/2 left-1/2 sm:w-fit top-10 sm:top-3 justify-center gap-4">
               {gameState === "idle" ? (
             <button onClick={startGame}  className="font-bold border-2 border-[var(--foreground)] p-2 cursor-pointer hover:bg-[var(--foreground)] hover:text-[var(--background)] hover:border-[var(--foreground)]">
               Empezar Juego
