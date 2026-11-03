@@ -188,7 +188,7 @@ export function Blackjack ({url} : {url:string}) {
             {/* ({calculateScore(dealerHand)}) */}
           </h3>
           <div className="flex justify-center gap-2">
-            <span className="flex pl-1 justify-between flex-row-reverse absolute -translate-y-12 left-0 text-3xl w-full font-bold">
+            <span className="flex pl-1 justify-between flex-row-reverse absolute -translate-y-11/6 left-0 text-3xl w-full font-bold">
               <p>Dealer</p>
               {calculateScore(dealerHand)}
             </span>
@@ -218,7 +218,7 @@ export function Blackjack ({url} : {url:string}) {
             {/* ({calculateScore(playerHand)}) */}
           </h3>
           <div className=" flex justify-center gap-2">
-            <span className="flex pl-1 justify-between absolute translate-y-18 left-0 text-3xl w-full font-bold">
+            <span className="flex pl-1 justify-between absolute translate-y-0 left-0 text-3xl w-full font-bold">
               <p>Player</p>
               {calculateScore(playerHand)}
             </span>
